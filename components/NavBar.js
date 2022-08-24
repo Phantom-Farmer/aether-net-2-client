@@ -1,49 +1,61 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useAuth } from '../utils/context/authContext';
+import {
+  Navbar, Container, Nav,
+} from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
 import ProfileDropdown from './ProfileDropdown';
 
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="container-fluid">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
         <Link passHref href="/">
-          <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            aether-net
-          </a>
+          <Navbar.Brand>aether-net</Navbar.Brand>
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div className="navbarProfile" id="navbarTogglerDemo01">
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                <Image src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
-              </a>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <div className="profileDropdownBottomDiv">
-                  <ProfileDropdown />
-                  <button type="button" className="signOutBtn btn" onClick={signOut}>
-                    Sign Out
-                  </button>
-                  <Link passHref href="/profile">
-                    <button type="button" className="profileBtn btn">
-                      Profile
-                    </button>
-                  </Link>
-                </div>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
+            <Link passHref href="/">
+              <Nav.Link>Home</Nav.Link>
+            </Link>
+            <Link passHref href="/meditations">
+              <Nav.Link>meditations</Nav.Link>
+            </Link>
+            <Link passHref href="/music-player">
+              <Nav.Link>music player</Nav.Link>
+            </Link>
+            <div className="navbarProfile" id="navbarTogglerDemo01">
+              <ul className="navbar-nav">
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <img src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
+                  </a>
+                  <ul className="dropdown-menu dropdown-menu-end">
+                    <div className="profileDropdownBottomDiv">
+                      <ProfileDropdown />
+                      <button type="button" className="signOutBtn btn" onClick={signOut}>
+                        Sign Out
+                      </button>
+                      <Link passHref href="/profile">
+                        <button type="button" className="profileBtn btn">
+                          Profile
+                        </button>
+                      </Link>
+                    </div>
+                  </ul>
+                </li>
+                <div />
               </ul>
-            </li>
-            <div />
-          </ul>
-        </div>
-      </div>
-    </nav>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
