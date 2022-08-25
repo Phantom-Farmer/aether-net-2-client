@@ -15,7 +15,7 @@ const getDreamCardsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createDreamCards = (dcObj) => new Promise((resolve, reject) => {
+const createDreamCard = (dcObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/users.json?`, dcObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
@@ -45,7 +45,7 @@ const updateDreamCard = (dcObj) => new Promise((resolve, reject) => {
 
 export {
   getDreamCardsByUid,
-  createDreamCards,
+  createDreamCard,
   getSingleDreamCard,
   deleteSingleDreamCard,
   updateDreamCard,

@@ -43,7 +43,6 @@ export default function SleepCard({ scObj, onUpdate }) {
 
 SleepCard.propTypes = {
   scObj: PropTypes.shape({
-    imageURL: PropTypes.string,
     timeStamp: PropTypes.string,
     mind: PropTypes.string,
     body: PropTypes.string,
