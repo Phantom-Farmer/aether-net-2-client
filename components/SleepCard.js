@@ -11,33 +11,21 @@ export default function SleepCard({ scObj, onUpdate }) {
     }
   };
   return (
-    <>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Text>
-            sleep card for: {scObj.timeStamp}
-          </Card.Text>
-          <div>mind: {scObj.mind}</div>
-          <div>body: {scObj.body}</div>
-          <div>meditation: {scObj.meditation}</div>
-        </Card.Body>
-      </Card>
-      <br />
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Text>
-            dream
-          </Card.Text>
-          <Link href="/" passHref>
-            <Button variant="danger" onClick={deleteThisSleepCard} className="m-2">
-              DELETE
-            </Button>
-          </Link>
-        </Card.Body>
-      </Card>
-    </>
+    <Card style={{ width: '18rem', margin: '5px' }}>
+      <Card.Body>
+        <Card.Text>
+          sleep card for: {scObj.timeStamp}
+        </Card.Text>
+        <div>mind: {scObj.mind}</div>
+        <div>body: {scObj.body}</div>
+        <div>meditation: {scObj.meditation}</div>
+        <Link href="/" passHref>
+          <Button variant="danger" onClick={deleteThisSleepCard} className="m-2">
+            DELETE
+          </Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 }
 

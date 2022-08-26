@@ -36,9 +36,16 @@ export default function NewSleepCardForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateSleepCard(formInput).then(() => router.push('/'));
+      const payload = {
+        ...formInput,
+        timeStamp: new Date().toLocaleString(),
+      };
+      updateSleepCard(payload).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = {
+        ...formInput,
+        timeStamp: new Date().toLocaleString(),
+      };
       createSleepCard(payload).then(() => {
         router.push('/');
       });
