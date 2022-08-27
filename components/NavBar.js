@@ -45,11 +45,6 @@ export default function NavBar() {
                       <button type="button" className="signOutBtn btn" onClick={signOut}>
                         Sign Out
                       </button>
-                      <Link passHref href="/profile">
-                        <button type="button" className="profileBtn btn">
-                          Profile
-                        </button>
-                      </Link>
                     </div>
                   </ul>
                 </li>

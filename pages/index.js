@@ -8,12 +8,15 @@ export default function Home() {
   const [sleepCards, setSleepCards] = useState([]);
   const { user } = useAuth();
   const getAllSleepCards = () => {
-    getSleepCardsByUid(user.uid).then(setSleepCards);
+    getSleepCardsByUid(user.uid).then((scArray) => {
+      setSleepCards(scArray);
+    });
   };
 
   useEffect(() => {
-    getAllSleepCards(user.uid);
+    getAllSleepCards();
   }, [user.uid]);
+  console.warn(sleepCards);
   return (
     <div className="d-flex flex-wrap">
       {sleepCards.map((scObj) => (
