@@ -51,7 +51,7 @@ export default function SleepCard({ scObj, onUpdate }) {
               DELETE
             </Button>
           </Link>
-          <Link href="/" passHref>
+          <Link href={`/sleepcard/edit/${scObj.firebaseKey}`} passHref>
             <Button variant="danger" onClick={updateSleepCard} className="m-2">
               UPDATE
             </Button>
