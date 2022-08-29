@@ -23,13 +23,12 @@ export default function NewSleepCardForm({ obj }) {
 
   useEffect(() => {
     if (obj.firebaseKey)setFormInput(obj);
-  }, [obj, user]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
-      timeStamp: new Date().toLocaleString(),
       [name]: value,
     }));
   };
@@ -37,7 +36,8 @@ export default function NewSleepCardForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateSleepCard(formInput).then(() => router.push('/'));
+      updateSleepCard(formInput)
+        .then(() => router.push('/'));
     } else {
       const payload = { ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid };
       createSleepCard(payload).then(() => {
@@ -48,7 +48,7 @@ export default function NewSleepCardForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} sleepcard</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'update' : 'create'} sleepcard</h2>
       <FloatingLabel controlId="floatingInput2" label="mind" className="mb-3">
         <Form.Control type="text" placeholder="how does your mind feel?" name="mind" value={formInput.mind} onChange={handleChange} required />
       </FloatingLabel>
@@ -58,7 +58,7 @@ export default function NewSleepCardForm({ obj }) {
       <FloatingLabel controlId="floatingInput3" label="meditation" className="mb-3">
         <Form.Control type="text" placeholder="choose a meditation" name="meditation" value={formInput.meditation} onChange={handleChange} required />
       </FloatingLabel>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} sleepcard</Button>
+      <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} sleepcard</Button>
     </Form>
   );
 }
