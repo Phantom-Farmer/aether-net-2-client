@@ -38,7 +38,7 @@ const deleteSingleSleepCard = (firebaseKey) => new Promise((resolve, reject) => 
 });
 
 const updateSleepCard = (scObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/sleepCards/${scObj.firebaseKey}.json`)
+  axios.patch(`${dbUrl}/sleepCards/${scObj.firebaseKey}.json`, scObj)
     .then(() => getSleepCardsByUid(scObj.uid)).then(resolve)
     .catch(reject);
 });
