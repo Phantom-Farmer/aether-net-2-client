@@ -43,11 +43,18 @@ const updateDreamCard = (dcObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getDreamCardBySleepCardId = (sleepCardId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/dreamCards/${sleepCardId}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 export {
   getDreamCardsByUid,
   createDreamCard,
   getSingleDreamCard,
   deleteSingleDreamCard,
   updateDreamCard,
+  getDreamCardBySleepCardId,
 
 };
