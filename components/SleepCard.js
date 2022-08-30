@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
 import { deleteSingleSleepCard } from '../api/sleepCardData';
 
-export default function SleepCard({ scObj, dcObj, onUpdate }) {
+export default function SleepCard({ scObj, onUpdate }) {
   const deleteThisSleepCard = () => {
     if (window.confirm('Are you sure?')) {
       deleteSingleSleepCard(scObj.firebaseKey).then(onUpdate);
@@ -46,23 +46,9 @@ export default function SleepCard({ scObj, dcObj, onUpdate }) {
       <Card>
         <Card.Img variant="bottom" src="holder.js/100px180" />
         <Card.Body>
-          <Card.Text>
-            when you wake up:
-          </Card.Text>
-          <div>
-            <h1>sleep review:</h1>
-            <h3>{dcObj.sleepReview}</h3>
-          </div>
-          <div>
-            <h1>dream journal:</h1>
-            <h3>{dcObj.dreamJournal}</h3>
-          </div>
-          <div>
-            <h1>favorite: </h1>
-          </div>
           <Link href={`dreamcard/new/${scObj.firebaseKey}`} passHref>
             <Button variant="danger" className="m-2">
-              dream journal
+              add dream journal
             </Button>
           </Link>
         </Card.Body>
@@ -80,21 +66,4 @@ SleepCard.propTypes = {
     firebaseKey: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
-  dcObj: PropTypes.shape({
-    timeStamp: PropTypes.string,
-    sleepReview: PropTypes.string,
-    dreamJournal: PropTypes.string,
-    dreamId: PropTypes.string,
-    favorite: PropTypes.bool,
-  }),
-};
-
-SleepCard.defaultProps = {
-  dcObj: PropTypes.shape({
-    timeStamp: '',
-    sleepReview: '',
-    dreamJournal: '',
-    dreamId: '',
-    favorite: false,
-  }),
 };

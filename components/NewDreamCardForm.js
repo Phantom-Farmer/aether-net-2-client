@@ -40,7 +40,7 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
         .then(() => router.push('/'));
     } else {
       const payload = {
-        ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, dreamId: scFirebaseKey,
+        ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,
       };
       createDreamCard(payload).then(() => {
         router.push('/');
@@ -81,7 +81,7 @@ NewDreamCardForm.propTypes = {
     sleepReview: PropTypes.string,
     dreamJournal: PropTypes.string,
     favorite: PropTypes.bool,
-    dreamId: PropTypes.string,
+    sleepCardId: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
   scFirebaseKey: PropTypes.string,
