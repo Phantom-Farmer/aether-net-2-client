@@ -43,7 +43,7 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
         ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,
       };
       createDreamCard(payload).then(() => {
-        router.push('/');
+        router.push('/dreamcard/view/dcRender');
       });
     }
   };
