@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { React, useEffect, useState } from 'react';
-import { getDreamCardsByUid } from '../../../api/dreamCardData';
-import DreamCard from '../../../components/DreamCard';
-import { useAuth } from '../../../utils/context/authContext';
+import { getDreamCardsByUid } from '../../api/dreamCardData';
+import DreamCard from '../../components/DreamCard';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function DisplayDc() {
   const [dreamCards, setDreamCards] = useState([]);
