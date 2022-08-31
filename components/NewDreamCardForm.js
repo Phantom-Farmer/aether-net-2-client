@@ -12,7 +12,6 @@ const initialState = {
   sleepReview: '',
   dreamJournal: '',
   firebaseKey: '',
-  favorite: false,
 };
 
 export default function NewDreamCardForm({ obj, scFirebaseKey }) {
@@ -43,7 +42,7 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
         ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,
       };
       createDreamCard(payload).then(() => {
-        router.push('/dreamcard/view/dcRender');
+        router.push('/dreamcard/dream-journal');
       });
     }
   };
@@ -57,19 +56,6 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
       <FloatingLabel controlId="floatingInput2" label="dream journal" className="mb-3">
         <Form.Control type="text" placeholder="DREAMJOURNAL" name="dreamJournal" value={formInput.dreamJournal} onChange={handleChange} required />
       </FloatingLabel>
-
-      <Form.Check
-        className="text-white mb-3"
-        type="switch"
-        id="favorite"
-        name="favorite"
-        label="Favorite?"
-        checked={formInput.favorite}
-        onChange={(e) => setFormInput((prevState) => ({
-          ...prevState,
-          favorite: e.target.checked,
-        }))}
-      />
       <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} dream journal</Button>
     </Form>
   );

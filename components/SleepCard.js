@@ -37,18 +37,17 @@ export default function SleepCard({ scObj, onUpdate }) {
           </Link>
           <Link href={`/sleepcard/edit/${scObj.firebaseKey}`} passHref>
             <Button variant="danger" className="m-2">
-              update
+              edit
             </Button>
           </Link>
-        </Card.Body>
-      </Card>
-      <br />
-      <Card>
-        <Card.Img variant="bottom" src="holder.js/100px180" />
-        <Card.Body>
           <Link href={`dreamcard/new/${scObj.firebaseKey}`} passHref>
             <Button variant="danger" className="m-2">
               add dream journal
+            </Button>
+          </Link>
+          <Link href={`dreamcard/sleepstudy/${scObj.firebaseKey}`} passHref>
+            <Button variant="danger" className="m-2">
+              view this sleep study
             </Button>
           </Link>
         </Card.Body>

@@ -33,6 +33,9 @@ export default function NavBar() {
             <Link passHref href="/music-player">
               <Nav.Link>music player</Nav.Link>
             </Link>
+            <Link passHref href="/dreamcard/dream-journal">
+              <Nav.Link>dream journals</Nav.Link>
+            </Link>
             <div className="navbarProfile" id="navbarTogglerDemo01">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
