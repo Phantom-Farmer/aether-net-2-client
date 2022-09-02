@@ -19,9 +19,6 @@ export default function ViewSleepStudy() {
       <h2>
         sleep study
       </h2>
-      <h5>
-        {sleepStudy.scObj?.favorite ? 'favorite' : ''}
-      </h5>
       <div className="sleepStudyBox">
         <SleepCard scObj={sleepStudy} />
       </div>
