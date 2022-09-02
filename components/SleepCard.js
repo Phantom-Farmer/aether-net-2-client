@@ -45,7 +45,7 @@ export default function SleepCard({ scObj, onUpdate }) {
               add dream journal
             </Button>
           </Link>
-          <Link href={`sleepcard/sleepstudy/${scObj.firebaseKey}`} passHref>
+          <Link href={`dreamcard/sleepstudy/${scObj.firebaseKey}`} passHref>
             <Button variant="danger" className="m-2">
               view this sleep study
             </Button>

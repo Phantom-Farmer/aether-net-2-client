@@ -8,6 +8,7 @@ import viewThisSleepStudy from '../../../api/mergeData';
 export default function ViewSleepStudy() {
   const [sleepStudy, setSleepStudy] = useState({});
   const router = useRouter();
+
   const { firebaseKey } = router.query;
 
   useEffect(() => {
