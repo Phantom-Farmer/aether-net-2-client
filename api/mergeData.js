@@ -1,12 +1,12 @@
-import { getSingleDreamCard } from './dreamCardData';
+import { getDreamCardBySleepCardId } from './dreamCardData';
 import { getSingleSleepCard } from './sleepCardData';
 
-const viewThisSleepStudy = (dcFirebaseKey) => new Promise((resolve, reject) => {
-  getSingleDreamCard(dcFirebaseKey)
-    .then((dcObj) => {
-      getSingleSleepCard(dcObj.sleepCardId)
-        .then((scObj) => {
-          resolve({ scObj, ...dcObj });
+const viewThisSleepStudy = (scFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleSleepCard(scFirebaseKey)
+    .then((scObj) => {
+      getDreamCardBySleepCardId(scFirebaseKey)
+        .then((dcObj) => {
+          resolve({ dcObj, ...scObj });
         });
     }).catch((error) => reject(error));
 });
