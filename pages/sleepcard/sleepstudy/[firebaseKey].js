@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import viewThisSleepStudy from '../../../api/mergeData';
-// import SleepCard from '../../../components/SleepCard';
-// import DreamCard from '../../../components/DreamCard';
+import SleepCard from '../../../components/SleepCard';
+import DreamCard from '../../../components/DreamCard';
 
 export default function ViewSleepStudy() {
   const [sleepStudy, setSleepStudy] = useState({});
@@ -13,21 +13,21 @@ export default function ViewSleepStudy() {
   useEffect(() => {
     viewThisSleepStudy(firebaseKey).then(setSleepStudy);
   }, [firebaseKey]);
-
+  console.warn(sleepStudy);
   return (
     <div className="mt-5 d-flex flex-wrap">
       <h2>
         sleep study
       </h2>
       <h5>
-        {sleepStudy.scObj?.favorite ? ' 🤍' : ''}
+        {sleepStudy.scObj?.favorite ? 'favorite' : ''}
       </h5>
-      { /* <div className="sleepStudyBox">
-        <SleepCard />
+      <div className="sleepStudyBox">
+        <SleepCard scObj={sleepStudy} />
       </div>
       <div className="sleepStudyBox">
-        <DreamCard />
-  </div> */ }
+        <DreamCard dcObj={sleepStudy.dcObj[0]} />
+      </div>
     </div>
   );
 }
