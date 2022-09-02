@@ -24,7 +24,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>home</Nav.Link>
             </Link>
-            <Link passHref href="sleepcard/new">
+            <Link passHref href="/sleepcard/new">
               <Nav.Link>add sleepcard</Nav.Link>
             </Link>
             <Link passHref href="/meditations">
