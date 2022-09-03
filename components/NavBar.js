@@ -30,7 +30,7 @@ export default function NavBar() {
             <Link passHref href="/meditations">
               <Nav.Link>meditations</Nav.Link>
             </Link>
-            <Link passHref href="/music-player">
+            <Link passHref href="/player">
               <Nav.Link>music player</Nav.Link>
             </Link>
             <Link passHref href="/dreamcard/dream-journal">
