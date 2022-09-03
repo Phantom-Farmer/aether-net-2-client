@@ -6,7 +6,8 @@ const viewThisSleepStudy = (scFirebaseKey) => new Promise((resolve, reject) => {
     .then((scObj) => {
       getDreamCardBySleepCardId(scFirebaseKey)
         .then((dcObj) => {
-          resolve({ dcObj, ...scObj });
+          const dreamObj = dcObj[0];
+          resolve({ dreamObj, ...scObj });
         });
     }).catch((error) => reject(error));
 });
