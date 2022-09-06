@@ -8,15 +8,11 @@ import DreamCard from '../../../components/DreamCard';
 
 export default function ViewSleepStudy() {
   const [sleepStudy, setSleepStudy] = useState({});
-  const [dreamData, setDreamData] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewThisSleepStudy(firebaseKey).then((sleepData) => {
-      setSleepStudy(sleepData);
-      setDreamData(sleepStudy.dreamObj);
-    });
+    viewThisSleepStudy(firebaseKey).then(setSleepStudy);
   }, [firebaseKey]);
   console.warn(sleepStudy);
   return (
@@ -28,7 +24,7 @@ export default function ViewSleepStudy() {
         <SleepCard scObj={sleepStudy} />
       </div>
       <div className="sleepStudyBox">
-        <DreamCard dcObj={dreamData} />
+        <DreamCard dcObj={sleepStudy.dreamObj} />
       </div>
     </div>
   );
