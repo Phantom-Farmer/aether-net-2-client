@@ -13,7 +13,6 @@ const initialState = {
   body: '',
   meditation: '',
   firebaseKey: '',
-  favorite: false,
 };
 
 export default function NewSleepCardForm({ obj }) {
@@ -59,18 +58,6 @@ export default function NewSleepCardForm({ obj }) {
       <FloatingLabel controlId="floatingInput3" label="meditation" className="mb-3">
         <Form.Control type="text" placeholder="choose a meditation" name="meditation" value={formInput.meditation} onChange={handleChange} required />
       </FloatingLabel>
-      <Form.Check
-        className="text-white mb-3"
-        type="switch"
-        id="favorite"
-        name="favorite"
-        label="Favorite?"
-        checked={formInput.favorite}
-        onChange={(e) => setFormInput((prevState) => ({
-          ...prevState,
-          favorite: e.target.checked,
-        }))}
-      />
       <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} sleepcard</Button>
     </Form>
   );
@@ -83,7 +70,6 @@ NewSleepCardForm.propTypes = {
     body: PropTypes.string,
     meditation: PropTypes.string,
     firebaseKey: PropTypes.string,
-    favorite: PropTypes.bool,
   }),
 };
 
