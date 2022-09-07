@@ -22,7 +22,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
             <h3>{dcObj.sleepReview}</h3>
           </div>
           <div>
-            <h1>Dream Journal:</h1>
+            <h1>dream journal:</h1>
             <h3>{dcObj.dreamJournal}</h3>
           </div>
           <Link href="/" passHref>

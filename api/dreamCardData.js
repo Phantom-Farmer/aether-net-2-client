@@ -45,7 +45,7 @@ const updateDreamCard = (dcObj) => new Promise((resolve, reject) => {
 
 const getDreamCardBySleepCardId = (sleepCardId) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/dreamCards.json?orderBy="sleepCardId"&equalTo="${sleepCardId}"`)
-    .then((response) => resolve(response.data))
+    .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
