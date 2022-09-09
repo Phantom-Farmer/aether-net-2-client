@@ -1,40 +1,34 @@
-/* eslint-disable no-lone-blocks */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
-import AudioPlayer from 'react-mp3';
+import React, { useState } from 'react';
+import MusicPlayer from '../components/MusicPlayer';
 
-const styles = {
-  fontFamily: 'sans-serif',
-  textAlign: 'center',
-};
-
-const Player = () => {
-  { /* const [songs, setSongs] = useState([
+export default function Player() {
+  const songs = useState([
     {
-      title: '$orries',
-      artist: 'Peachy!',
-      album: ' Shiloh',
-      track: '$orries',
-      year: '1',
-      img_src: './songs_images/$orries_Cover (front)_e.jpg',
-      src: './songs/$orries.mp3',
+      title: 'song 1',
+      artist: 'phantom farmer',
+      src: './songs/song 1.mp3',
     },
-  ]); */ }
+    {
+      title: 'song 2',
+      artist: 'phantom farmer',
+      src: './songs/song 2.mp3',
+    },
+    {
+      title: 'song 3',
+      artist: 'phantom farmer',
+      src: './songs/.mp3',
+    },
+  ]);
+  const currentSongIndex = useState(0);
   return (
-    <>
-      <div className="audio-player">
-        Music Player
-      </div>
-      <div style={styles}>
-        <AudioPlayer
-          src="public/resources/scr.mp3"
-          autoPlay
-          controls
-        />
-      </div>
-    </>
+    <div>
+      <head>
+        <title>aether-net music player</title>
+      </head>
+      <h1>sleep music</h1>
+      <MusicPlayer
+        song={songs[currentSongIndex]}
+      />
+    </div>
   );
-};
-
-export default Player;
+}
