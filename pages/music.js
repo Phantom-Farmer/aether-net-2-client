@@ -1,32 +1,45 @@
 import { useEffect, useState } from 'react';
 
-function Music2() {
+function Music() {
   const song1 = new Audio('/songs/song1.mp3');
   const [playInLoop, setPlayInLoop] = useState(false);
+  const [currentSong, setCurrentSong] = useState(song1);
 
   useEffect(() => {
-    song1.load();
+    currentSong.load(setCurrentSong);
   }, []);
 
   useEffect(() => {
-    song1.loop = playInLoop;
+    currentSong.loop = playInLoop;
   }, [playInLoop]);
 
   const playSound = () => {
-    song1.play();
+    currentSong.play();
   };
 
   const pauseSound = () => {
-    song1.pause();
+    currentSong.pause();
   };
 
   const stopSound = () => {
-    song1.pause();
-    song1.currentTime = 0;
+    currentSong.pause();
+    currentSong.currentTime = 0;
   };
 
   return (
     <div className="Sounds">
+      <div>
+        <button type="button">
+          song1
+        </button>
+        <button type="button">
+          currentSong
+        </button>
+        <button type="button">
+          song3
+        </button>
+
+      </div>
       <input type="button" className="btn btn-primary mr-2" value="Play" onClick={playSound} />
       <input type="button" className="btn btn-primary mr-2" value="Pause" onClick={pauseSound} />
       <input type="button" className="btn btn-primary mr-2" value="Stop" onClick={stopSound} />
@@ -38,4 +51,4 @@ function Music2() {
   );
 }
 
-export default Music2;
+export default Music;
