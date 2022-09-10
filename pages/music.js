@@ -33,7 +33,7 @@ function Music() {
           song1
         </button>
         <button type="button">
-          currentSong
+          song2
         </button>
         <button type="button">
           song3
