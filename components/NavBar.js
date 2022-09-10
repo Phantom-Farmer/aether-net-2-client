@@ -33,7 +33,7 @@ export default function NavBar() {
             <Link passHref href="/meditations">
               <Nav.Link>meditations</Nav.Link>
             </Link>
-            <Link passHref href="/player">
+            <Link passHref href="/music">
               <Nav.Link>music player</Nav.Link>
             </Link>
             <div className="navbarProfile" id="navbarTogglerDemo01">
