@@ -1,54 +1,24 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
+import Song1 from '../components/Song1';
+import Song2 from '../components/Song2';
+import Song3 from '../components/Song3';
+import Song4 from '../components/Song4';
 
-function Music() {
-  const song1 = new Audio('/songs/song1.mp3');
-  const [playInLoop, setPlayInLoop] = useState(false);
-  const [currentSong, setCurrentSong] = useState(song1);
-
-  useEffect(() => {
-    currentSong.load(setCurrentSong);
-  }, []);
-
-  useEffect(() => {
-    currentSong.loop = playInLoop;
-  }, [playInLoop]);
-
-  const playSound = () => {
-    currentSong.play();
-  };
-
-  const pauseSound = () => {
-    currentSong.pause();
-  };
-
-  const stopSound = () => {
-    currentSong.pause();
-    currentSong.currentTime = 0;
-  };
-
+export default function PlayerPage() {
   return (
-    <div className="Sounds">
+    <>
       <div>
-        <button type="button">
-          song1
-        </button>
-        <button type="button">
-          song2
-        </button>
-        <button type="button">
-          song3
-        </button>
-
+        <Song1 />
       </div>
-      <input type="button" className="btn btn-primary mr-2" value="Play" onClick={playSound} />
-      <input type="button" className="btn btn-primary mr-2" value="Pause" onClick={pauseSound} />
-      <input type="button" className="btn btn-primary mr-2" value="Stop" onClick={stopSound} />
-
-      <label>
-        <input type="checkbox" checked={playInLoop} onChange={(e) => setPlayInLoop(e.target.checked)} /> Play in Loop
-      </label>
-    </div>
+      <div>
+        <Song2 />
+      </div>
+      <div>
+        <Song3 />
+      </div>
+      <div>
+        <Song4 />
+      </div>
+    </>
   );
 }
-
-export default Music;
