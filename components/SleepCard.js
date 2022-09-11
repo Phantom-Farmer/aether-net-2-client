@@ -12,8 +12,8 @@ export default function SleepCard({ scObj, onUpdate }) {
   };
   return (
     <>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: '75rem' }}>
+        <Card.Img variant="top" src="https://picsum.photos/500/150" />
         <Card.Body>
           <Card.Text>
             sleep card for: {scObj.timeStamp}
@@ -30,6 +30,7 @@ export default function SleepCard({ scObj, onUpdate }) {
             <h1>meditation:</h1>
             <h3>{scObj.meditation}</h3>
           </div>
+          <p className="card-text bold">{scObj.favorite ? 'Favorite!' : 'Not a Favorite' }</p>
           <Link href="/" passHref>
             <Button variant="danger" onClick={deleteThisSleepCard} className="m-2">
               delete
@@ -62,6 +63,7 @@ SleepCard.propTypes = {
     mind: PropTypes.string,
     body: PropTypes.string,
     meditation: PropTypes.string,
+    favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

@@ -11,8 +11,8 @@ export default function DreamCard({ dcObj, onUpdate }) {
   };
   return (
     <>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: '75rem' }}>
+        <Card.Img variant="top" src="https://picsum.photos/500/150" />
         <Card.Body>
           <Card.Text>
             when you wake up: {dcObj.timeStamp}
