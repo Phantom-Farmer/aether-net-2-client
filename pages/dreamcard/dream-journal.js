@@ -18,10 +18,15 @@ export default function DisplayDc() {
   }, [user.uid]);
   console.warn(dreamCards);
   return (
-    <div className="d-flex flex-wrap">
-      {dreamCards.map((dcObj) => (
-        <DreamCard key={dcObj.firebaseKey} dcObj={dcObj} onUpdate={getAllDreamCards} />
-      ))}
-    </div>
+    <>
+      <h2>
+        dream journals
+      </h2>
+      <div className="d-flex flex-wrap">
+        {dreamCards.map((dcObj) => (
+          <DreamCard key={dcObj.firebaseKey} dcObj={dcObj} onUpdate={getAllDreamCards} />
+        ))}
+      </div>
+    </>
   );
 }

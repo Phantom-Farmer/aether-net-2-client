@@ -36,7 +36,7 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateDreamCard(formInput)
-        .then(() => router.push('/'));
+        .then(() => router.push('/dreamcard/dream-journal'));
     } else {
       const payload = {
         ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,

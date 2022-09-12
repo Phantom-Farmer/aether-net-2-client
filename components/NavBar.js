@@ -12,8 +12,11 @@ import ProfileDropdown from './ProfileDropdown';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect fixed="top" expand="lg" bg="dark" variant="dark">
       <Container>
+        <Link passHref href="/">
+          <Navbar.Brand><img src="/images/metatrons.jpg" alt="logo" style={{ height: '60px' }} /></Navbar.Brand>
+        </Link>
         <Link passHref href="/">
           <Navbar.Brand>aether-net</Navbar.Brand>
         </Link>
