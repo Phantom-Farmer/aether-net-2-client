@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
@@ -12,17 +13,17 @@ export default function DreamCard({ dcObj, onUpdate }) {
   return (
     <>
       <Card style={{ width: '75rem' }}>
-        <Card.Img variant="top" src="https://picsum.photos/500/150" />
+        <img variant="top" alt="dream-pic" src="https://picsum.photos/500/100" />
         <Card.Body>
           <Card.Text>
             when you wake up: {dcObj.timeStamp}
           </Card.Text>
           <div>
-            <h1>sleep review:</h1>
+            <h4>sleep review:</h4>
             <h3>{dcObj.sleepReview}</h3>
           </div>
           <div>
-            <h1>dream journal:</h1>
+            <h4>dream journal:</h4>
             <h3>{dcObj.dreamJournal}</h3>
           </div>
           <Link href="/" passHref>

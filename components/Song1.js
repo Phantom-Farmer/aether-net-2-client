@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 
@@ -27,12 +28,12 @@ function Song1() {
     currentSong.currentTime = 0;
   };
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '40rem' }}>
+      <img variant="top" alt="sleep-pic" src="https://picsum.photos/500/150" />
       <Card.Body>
-        <Card.Title>Wind Song</Card.Title>
+        <Card.Title>wind song</Card.Title>
         <Card.Text>
-          play wind song
+          play wind song for a meditative gentle breeze helping you drift into restfulness
         </Card.Text>
       </Card.Body>
       <input type="button" className="btn btn-primary mr-2" value="Play" onClick={playSound} />

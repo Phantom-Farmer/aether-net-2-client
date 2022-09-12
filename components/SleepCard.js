@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -13,24 +14,24 @@ export default function SleepCard({ scObj, onUpdate }) {
   return (
     <>
       <Card style={{ width: '75rem' }}>
-        <Card.Img variant="top" src="https://picsum.photos/500/150" />
+        <img variant="top" alt="sleep-pic" src="https://picsum.photos/500/100" />
         <Card.Body>
           <Card.Text>
             sleep card for: {scObj.timeStamp}
           </Card.Text>
           <div>
-            <h1>mind:</h1>
+            <h4>mind:</h4>
             <h3>{scObj.mind}</h3>
           </div>
           <div>
-            <h1>body:</h1>
+            <h4>body:</h4>
             <h3>{scObj.body}</h3>
           </div>
           <div>
-            <h1>meditation:</h1>
+            <h4>meditation:</h4>
             <h3>{scObj.meditation}</h3>
           </div>
-          <p className="card-text bold">{scObj.favorite ? 'Favorite!' : 'Not a Favorite' }</p>
+          <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
           <Link href="/" passHref>
             <Button variant="danger" onClick={deleteThisSleepCard} className="m-2">
               delete
