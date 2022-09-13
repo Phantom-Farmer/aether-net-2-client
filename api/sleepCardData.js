@@ -43,11 +43,18 @@ const updateSleepCard = (scObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSleepCardDreamJournals = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/dreamCards.json?orderBy="sleepCardId"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getSleepCardsByUid,
   createSleepCard,
   getSingleSleepCard,
   deleteSingleSleepCard,
   updateSleepCard,
+  getSleepCardDreamJournals,
 
 };

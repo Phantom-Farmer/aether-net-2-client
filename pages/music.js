@@ -8,16 +8,21 @@ export default function PlayerPage() {
   return (
     <>
       <div>
-        <Song1 />
-      </div>
-      <div>
-        <Song2 />
-      </div>
-      <div>
-        <Song3 />
-      </div>
-      <div>
-        <Song4 />
+        <h1>
+          meditation music
+        </h1>
+        <div>
+          <Song1 />
+        </div>
+        <div>
+          <Song2 />
+        </div>
+        <div>
+          <Song3 />
+        </div>
+        <div>
+          <Song4 />
+        </div>
       </div>
     </>
   );

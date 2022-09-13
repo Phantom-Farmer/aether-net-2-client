@@ -36,9 +36,9 @@ function Song1() {
           play wind song for a meditative gentle breeze helping you drift into restfulness
         </Card.Text>
       </Card.Body>
-      <input type="button" className="btn btn-primary mr-2" value="Play" onClick={playSound} />
-      <input type="button" className="btn btn-primary mr-2" value="Pause" onClick={pauseSound} />
-      <input type="button" className="btn btn-primary mr-2" value="Stop" onClick={stopSound} />
+      <input type="button" className="btn" value="Play" onClick={playSound} />
+      <input type="button" className="btn" value="Pause" onClick={pauseSound} />
+      <input type="button" className="btn" value="Stop" onClick={stopSound} />
 
       <label>
         <input type="checkbox" checked={playInLoop} onChange={(e) => setPlayInLoop(e.target.checked)} /> Play in Loop
