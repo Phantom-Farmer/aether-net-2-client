@@ -8,6 +8,9 @@ export default function PlayerPage() {
   return (
     <>
       <div>
+        <h1>
+          meditation music
+        </h1>
         <div>
           <Song1 />
         </div>

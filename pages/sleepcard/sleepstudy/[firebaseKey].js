@@ -23,8 +23,16 @@ export default function ViewSleepStudy() {
       <div className="sleepStudyBox">
         <SleepCard scObj={sleepStudy} />
       </div>
-      <div className="sleepStudyBox">
-        <DreamCard dcObj={sleepStudy.dreamObj} />
+      <div className="sleepStudyDreamBox">
+        {sleepStudy.dreamCards?.map((dreamCard) => (
+          <DreamCard
+            key={dreamCard.firebaseKey}
+            dcObj={dreamCard}
+            onUpdate={() => {
+              viewThisSleepStudy(firebaseKey).then(setSleepStudy);
+            }}
+          />
+        ))}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export default function NavBar() {
   const { user } = useAuth();
   return (
     <Navbar collapseOnSelect fixed="top" expand="lg" bg="dark" variant="dark">
-      <Container>
+      <Container style={{ padding: 12 }}>
         <Link passHref href="/">
           <Navbar.Brand><img src="/images/metatrons.jpg" alt="logo" style={{ height: '60px' }} /></Navbar.Brand>
         </Link>
@@ -22,31 +22,31 @@ export default function NavBar() {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto" style={{ paddingTop: 30, paddingLeft: 50, paddingRight: 50 }}>
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link>sleep cards</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>sleep cards</Nav.Link>
             </Link>
             <Link passHref href="/dreamcard/dream-journal">
-              <Nav.Link>dream journals</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>dream journals</Nav.Link>
             </Link>
             <Link passHref href="/sleepcard/new">
-              <Nav.Link>add sleep card</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>add sleep card</Nav.Link>
             </Link>
             <Link passHref href="/meditations">
-              <Nav.Link>meditations</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>meditations</Nav.Link>
             </Link>
             <Link passHref href="/music">
-              <Nav.Link>music player</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>music player</Nav.Link>
             </Link>
             <div className="navbarProfile" id="navbarTogglerDemo01">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    <img src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
+                    <img src={user.photoURL} width="50px" height="50px" alt="user" className="user-icon" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
-                    <div className="profileDropdownBottomDiv">
+                    <div className="profileDropdownBottomDiv" style={{ paddingLeft: 30, paddingRight: 30 }}>
                       <ProfileDropdown />
                       <button type="button" className="signOutBtn btn" onClick={signOut}>
                         Sign Out

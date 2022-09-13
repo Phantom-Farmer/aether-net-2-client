@@ -14,7 +14,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
     <>
       <Card style={{ width: '75rem' }}>
         <img variant="top" alt="dream-pic" src="https://picsum.photos/500/100" />
-        <Card.Body>
+        <Card.Body style={{ backgroundColor: 'peachpuff' }}>
           <Card.Text>
             when you wake up: {dcObj.timeStamp}
           </Card.Text>
@@ -26,7 +26,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
             <h4>dream journal:</h4>
             <h3>{dcObj.dreamJournal}</h3>
           </div>
-          <Link href="/" passHref>
+          <Link href="/dreamcard/dream-journal" passHref>
             <Button variant="danger" onClick={deleteThisDreamCard} className="m-2">
               delete
             </Button>
