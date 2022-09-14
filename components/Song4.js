@@ -28,7 +28,7 @@ function Song4() {
     currentSong.currentTime = 0;
   };
   return (
-    <Card style={{ width: '40rem' }}>
+    <Card className="mc" style={{ width: '40rem' }}>
       <img variant="top" alt="sleep-pic" src="https://picsum.photos/500/150" />
       <Card.Body>
         <Card.Title>water song</Card.Title>
@@ -36,11 +36,12 @@ function Song4() {
           play water song for the light drizzle of soft rain or gentle flow of the ocean tide meeting the shoreline
         </Card.Text>
       </Card.Body>
-      <input type="button" className="btn" value="Play" onClick={playSound} />
-      <input type="button" className="btn" value="Pause" onClick={pauseSound} />
-      <input type="button" className="btn" value="Stop" onClick={stopSound} />
-
-      <label>
+      <div className="btnBox">
+        <input type="button" className="btn" value="Play" onClick={playSound} />
+        <input type="button" className="btn" value="Pause" onClick={pauseSound} />
+        <input type="button" className="btn" value="Stop" onClick={stopSound} />
+      </div>
+      <label className="loop">
         <input type="checkbox" checked={playInLoop} onChange={(e) => setPlayInLoop(e.target.checked)} /> Play in Loop
       </label>
     </Card>

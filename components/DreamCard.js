@@ -12,8 +12,8 @@ export default function DreamCard({ dcObj, onUpdate }) {
   };
   return (
     <>
-      <Card style={{ width: '75rem' }}>
-        <img variant="top" alt="dream-pic" src="https://picsum.photos/500/100" />
+      <Card className="dc" style={{ width: '75rem' }}>
+        <img variant="top" alt="dream-pic" src="/images/dreamjournal.jpg" />
         <Card.Body style={{ backgroundColor: 'peachpuff' }}>
           <Card.Text>
             when you wake up: {dcObj.timeStamp}
@@ -27,12 +27,12 @@ export default function DreamCard({ dcObj, onUpdate }) {
             <h3>{dcObj.dreamJournal}</h3>
           </div>
           <Link href="/dreamcard/dream-journal" passHref>
-            <Button variant="danger" onClick={deleteThisDreamCard} className="m-2">
+            <Button onClick={deleteThisDreamCard} className="m-2">
               delete
             </Button>
           </Link>
           <Link href={`/dreamcard/edit/${dcObj.firebaseKey}`} passHref>
-            <Button variant="danger" className="m-2">
+            <Button className="m-2">
               update
             </Button>
           </Link>

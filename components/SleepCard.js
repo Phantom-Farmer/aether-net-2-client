@@ -13,8 +13,8 @@ export default function SleepCard({ scObj, onUpdate }) {
   };
   return (
     <>
-      <Card style={{ width: '75rem' }}>
-        <img variant="top" alt="sleep-pic" src="https://picsum.photos/500/100" />
+      <Card className="sc" style={{ width: '75rem' }}>
+        <img variant="top" alt="sleep-pic" src="/images/sleepcard.jpg" />
         <Card.Body style={{ backgroundColor: 'lightblue' }}>
           <Card.Text>
             sleep card for: {scObj.timeStamp}
@@ -33,22 +33,22 @@ export default function SleepCard({ scObj, onUpdate }) {
           </div>
           <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
           <Link href="/" passHref>
-            <Button variant="danger" onClick={deleteThisSleepCard} className="m-2">
+            <Button onClick={deleteThisSleepCard} className="m-3">
               delete
             </Button>
           </Link>
           <Link href={`/sleepcard/edit/${scObj.firebaseKey}`} passHref>
-            <Button variant="danger" className="m-2">
+            <Button className="m-3">
               edit
             </Button>
           </Link>
           <Link href={`dreamcard/new/${scObj.firebaseKey}`} passHref>
-            <Button variant="danger" className="m-2">
+            <Button className="m-3">
               add dream journal
             </Button>
           </Link>
           <Link href={`sleepcard/sleepstudy/${scObj.firebaseKey}`} passHref>
-            <Button variant="danger" className="m-2">
+            <Button className="m-3">
               view this sleep study
             </Button>
           </Link>
