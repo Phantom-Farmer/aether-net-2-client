@@ -12,8 +12,8 @@ import ProfileDropdown from './ProfileDropdown';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar collapseOnSelect fixed="top" expand="lg" bg="dark" variant="dark">
-      <Container style={{ padding: 12 }}>
+    <Navbar collapseOnSelect className="navver" fixed="top" expand="lg" bg="dark" variant="dark">
+      <Container style={{ padding: 3 }}>
         <Link passHref href="/">
           <Navbar.Brand><img src="/images/metatrons.jpg" alt="logo" style={{ height: '60px' }} /></Navbar.Brand>
         </Link>
@@ -25,19 +25,19 @@ export default function NavBar() {
           <Nav className="me-auto" style={{ paddingTop: 30, paddingLeft: 50, paddingRight: 50 }}>
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>sleep cards</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 40 }}>sleep cards</Nav.Link>
             </Link>
             <Link passHref href="/dreamcard/dream-journal">
-              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>dream journals</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 30 }}>dream journals</Nav.Link>
             </Link>
             <Link passHref href="/sleepcard/new">
-              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>add sleep card</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 40 }}>add sleep card</Nav.Link>
             </Link>
             <Link passHref href="/meditations">
-              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>meditations</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 40 }}>meditations</Nav.Link>
             </Link>
             <Link passHref href="/music">
-              <Nav.Link style={{ paddingLeft: 30, paddingRight: 30 }}>music player</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 130 }}>music player</Nav.Link>
             </Link>
             <div className="navbarProfile" id="navbarTogglerDemo01">
               <ul className="navbar-nav">
@@ -46,7 +46,7 @@ export default function NavBar() {
                     <img src={user.photoURL} width="50px" height="50px" alt="user" className="user-icon" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
-                    <div className="profileDropdownBottomDiv" style={{ paddingLeft: 30, paddingRight: 30 }}>
+                    <div className="profileDropdownBottomDiv" style={{ paddingLeft: 50, paddingRight: 30 }}>
                       <ProfileDropdown />
                       <button type="button" className="signOutBtn btn" onClick={signOut}>
                         Sign Out

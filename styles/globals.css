@@ -20,3 +20,50 @@ a {
 body {
   background-color: rgb(226, 193, 255);
 }
+
+.dc {
+  border: 5px solid white;
+  margin: 8px;
+}
+
+.sc {
+  border: 5px solid white;
+  margin: 8px;
+}
+
+.m-3 {
+  background-color: rgb(226, 193, 255);
+  color: black;
+}
+
+.m-2 {
+  background-color: lightblue;
+  color: black;
+}
+
+.mc {
+  height: 400px;
+  border: 5px solid white;
+  margin: 8px;
+}
+
+.btn {
+  background-color: lightblue;
+  width: 70px;
+}
+
+.btnBox {
+  display: grid;
+  margin-left: 170px;
+  grid-template-columns: 20% 20% 20%;
+}
+
+.loop {
+  margin-left: 240px;
+  margin-top: 20px;
+}
+
+.songBox {
+  display: grid;
+  grid-template-columns: 51% 51%;
+}
