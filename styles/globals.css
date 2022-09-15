@@ -42,12 +42,12 @@ body {
 }
 
 .mc {
-  height: 400px;
+  height: 375px;
   border: 5px solid white;
   margin: 8px;
 }
 
-.btn {
+.bto {
   background-color: lightblue;
   width: 70px;
 }
