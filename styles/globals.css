@@ -68,3 +68,12 @@ body {
   display: grid;
   grid-template-columns: 51% 51%;
 }
+
+.med {
+  border: 5px solid white;
+  margin: 8px;
+}
+
+.medBox{
+  background-color: lightblue;
+}
