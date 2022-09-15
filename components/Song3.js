@@ -29,17 +29,16 @@ function Song3() {
   };
   return (
     <Card className="mc" style={{ width: '40rem' }}>
-      <img variant="top" alt="sleep-pic" src="https://picsum.photos/500/150" />
+      <img variant="top" alt="sleep-pic" src="/images/earth.jpg" />
       <Card.Body>
-        <Card.Title>earth Song</Card.Title>
         <Card.Text>
           play earth song for a grounding experience putting you in touch with the divine mother
         </Card.Text>
       </Card.Body>
       <div className="btnBox">
-        <input type="button" className="btn" value="Play" onClick={playSound} />
-        <input type="button" className="btn" value="Pause" onClick={pauseSound} />
-        <input type="button" className="btn" value="Stop" onClick={stopSound} />
+        <input type="button" className="bto" value="Play" onClick={playSound} />
+        <input type="button" className="bto" value="Pause" onClick={pauseSound} />
+        <input type="button" className="bto" value="Stop" onClick={stopSound} />
       </div>
       <label className="loop">
         <input type="checkbox" checked={playInLoop} onChange={(e) => setPlayInLoop(e.target.checked)} /> Play in Loop
