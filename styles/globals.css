@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: rgb(226, 193, 255);
+  background-color: rgb(220, 207, 232);
 }
 
 .dc {
@@ -81,4 +81,5 @@ body {
 .title {
   width: 1200px;
   border: 5px solid white;
+  margin-left: 5px;
 }

@@ -56,10 +56,17 @@ export default function NewSleepCardForm({ obj }) {
       <FloatingLabel controlId="floatingInput2" label="body" className="mb-3">
         <Form.Control type="text" placeholder="how does your body feel?" name="body" value={formInput.body} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput3" label="meditation" className="mb-3">
-        <Form.Control type="text" placeholder="choose a meditation" name="meditation" value={formInput.meditation} onChange={handleChange} required />
+      <FloatingLabel controlId="floatingSelect" label="meditation">
+        <Form.Select name="meditation" value={formInput.meditation} onChange={handleChange} className="mb-3" required>
+          <option disabled value="">
+            select a meditation
+          </option>
+          <option value="chakra visualization method">chakra visualization method</option>
+          <option value="goodnight everything method">goodnight everything method</option>
+          <option value="make room for gratitude method">make room for gratitude method</option>
+          <option value="custom meditation - choose your own adventure">custom meditation - choose your own adventure</option>
+        </Form.Select>
       </FloatingLabel>
-
       <Form.Check
         className="text-white mb-3"
         type="switch"
