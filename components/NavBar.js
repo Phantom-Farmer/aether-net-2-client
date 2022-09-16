@@ -15,11 +15,11 @@ export default function NavBar() {
     <Navbar collapseOnSelect className="navver" fixed="top" expand="lg" bg="dark" variant="dark">
       <Container style={{ padding: 3 }}>
         <Link passHref href="/">
-          <Navbar.Brand><img src="/images/metatrons.jpg" alt="logo" style={{ height: '60px' }} /></Navbar.Brand>
+          <Navbar.Brand><img src="/images/metatrons.jpg" alt="logo" style={{ height: '60px', marginLeft: 40 }} /></Navbar.Brand>
         </Link>
-        <Link passHref href="/">
+        {/* <Link passHref href="/">
           <Navbar.Brand>aether-net</Navbar.Brand>
-        </Link>
+  </Link> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" style={{ paddingTop: 30, paddingLeft: 50, paddingRight: 50 }}>
@@ -43,7 +43,7 @@ export default function NavBar() {
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    <img src={user.photoURL} width="50px" height="50px" alt="user" className="user-icon" />
+                    <img src={user?.photoURL} width="50px" height="50px" alt="user" className="user-icon" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
                     <div className="profileDropdownBottomDiv" style={{ paddingLeft: 50, paddingRight: 30 }}>

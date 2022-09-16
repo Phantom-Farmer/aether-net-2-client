@@ -12,16 +12,16 @@ export default function MeditationPage() {
             These are descriptions for the meditation options you will have when creating a new sleep card.
           </Card.Text>
           <div>
-            <h1>meditation 1:</h1>
+            <h1>chakra visualization method: </h1>
           </div>
           <div>
-            <h1>meditation 2:</h1>
+            <h1>goodnight, everything method:</h1>
           </div>
           <div>
-            <h1>meditation 3:</h1>
+            <h1>make room for gratitude method:</h1>
           </div>
           <div>
-            <h1>meditation 4:</h1>
+            <h1>custom method - choose you own adventure:</h1>
           </div>
         </Card.Body>
       </Card>
