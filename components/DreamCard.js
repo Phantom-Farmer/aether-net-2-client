@@ -16,7 +16,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
         <img variant="top" alt="dream-pic" src="/images/dreamjournal.jpg" />
         <Card.Body style={{ backgroundColor: 'peachpuff' }}>
           <Card.Text>
-            when you wake up: {dcObj.timeStamp}
+            wake up: {dcObj.timeStamp}
           </Card.Text>
           <div>
             <h4>sleep review:</h4>
