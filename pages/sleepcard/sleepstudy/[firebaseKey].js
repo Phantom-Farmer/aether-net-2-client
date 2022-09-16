@@ -19,7 +19,7 @@ export default function ViewSleepStudy() {
   return (
     <>
       <Card className="title">
-        <img variant="top" alt="titlePic" src="/images/meditations.jpg" />
+        <img variant="top" alt="titlePic" src="/images/title.jpg" />
       </Card>
       <div className="mt-5 d-flex flex-wrap">
         <h2>
