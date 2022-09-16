@@ -32,7 +32,7 @@ function Song2() {
       <img variant="top" alt="sleep-pic" src="/images/fire.jpg" />
       <Card.Body>
         <Card.Text>
-          play fire song to bring warmth, rejuvenation, and nourishment to your journey into sleep
+          play fire song to bring warmth and rejuvenation to your journey into sleep
         </Card.Text>
       </Card.Body>
       <div className="btnBox">

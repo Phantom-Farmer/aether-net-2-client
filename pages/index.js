@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { React, useEffect, useState } from 'react';
 import Head from 'next/head';
+import { Card } from 'react-bootstrap';
 import { getSleepCardsByUid } from '../api/sleepCardData';
 import SleepCard from '../components/SleepCard';
 import { useAuth } from '../utils/context/authContext';
@@ -32,6 +34,9 @@ export default function Home() {
   console.warn(sleepCards);
   return (
     <>
+      <Card className="title">
+        <img variant="top" alt="titlePic" src="/images/meditations.jpg" />
+      </Card>
       <h2>
         sleep cards
       </h2>
