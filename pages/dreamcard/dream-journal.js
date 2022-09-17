@@ -21,9 +21,11 @@ export default function DisplayDc() {
   console.warn(dreamCards);
   return (
     <>
-      <Card className="title">
-        <img variant="top" alt="titlePic" src="/images/title.jpg" />
-      </Card>
+      <div className="container-fluid">
+        <Card className="title" style={{ width: '75rem' }}>
+          <img alt="titlePic" src="/images/title.jpg" />
+        </Card>
+      </div>
       <h2>
         dream journals
       </h2>
