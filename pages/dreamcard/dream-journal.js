@@ -15,6 +15,11 @@ export default function DisplayDc() {
     });
   };
 
+  const sortedDC = (array) => {
+    const orderedDCs = array.sort((a, b) => ((b.timeStamp > a.timeStamp) ? 1 : -1));
+    return orderedDCs;
+  };
+
   useEffect(() => {
     getAllDreamCards();
   }, [user.uid]);
@@ -30,7 +35,7 @@ export default function DisplayDc() {
         dream journals
       </h2>
       <div className="d-flex flex-wrap">
-        {dreamCards.map((dcObj) => (
+        {sortedDC(dreamCards).map((dcObj) => (
           <DreamCard key={dcObj.firebaseKey} dcObj={dcObj} onUpdate={getAllDreamCards} />
         ))}
       </div>

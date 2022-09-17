@@ -24,6 +24,11 @@ export default function Home() {
     });
   };
 
+  const sortedSC = (array) => {
+    const orderedSCs = array.sort((a, b) => ((b.timeStamp > a.timeStamp) ? 1 : -1));
+    return orderedSCs;
+  };
+
   useEffect(() => {
     document.title = 'aether-net';
   }, []);
@@ -43,7 +48,7 @@ export default function Home() {
         sleep cards
       </h2>
       <div className="d-flex flex-wrap">
-        {sleepCards.map((scObj) => (
+        {sortedSC(sleepCards).map((scObj) => (
           <SleepCard key={scObj.firebaseKey} scObj={scObj} onUpdate={getAllSleepCards} />
         ))}
       </div>

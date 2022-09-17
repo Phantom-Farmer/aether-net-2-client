@@ -49,6 +49,12 @@ const getSleepCardDreamJournals = (firebaseKey) => new Promise((resolve, reject)
     .catch((error) => reject(error));
 });
 
+const getSleepCardsByFav = (favorite) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/sleepCards.json?orderBy="favorite"&equalTo="${favorite.true}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getSleepCardsByUid,
   createSleepCard,
@@ -56,5 +62,6 @@ export {
   deleteSingleSleepCard,
   updateSleepCard,
   getSleepCardDreamJournals,
+  getSleepCardsByFav,
 
 };
