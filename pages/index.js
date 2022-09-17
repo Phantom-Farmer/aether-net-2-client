@@ -34,9 +34,11 @@ export default function Home() {
   console.warn(sleepCards);
   return (
     <>
-      <Card className="title">
-        <img variant="top" alt="titlePic" src="/images/title.jpg" />
-      </Card>
+      <div className="container-fluid">
+        <Card className="title" style={{ width: '75rem' }}>
+          <img alt="titlePic" src="/images/title.jpg" />
+        </Card>
+      </div>
       <h2>
         sleep cards
       </h2>
