@@ -11,6 +11,7 @@ const initialState = {
   timeStamp: '',
   sleepReview: '',
   dreamJournal: '',
+  favorite: false,
   firebaseKey: '',
 };
 
@@ -51,11 +52,23 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'update' : 'create'} dream journal</h2>
       <FloatingLabel controlId="floatingInput2" label="sleep review" className="mb-3">
-        <Form.Control type="text" placeholder="SLEEPREVIEW" name="sleepReview" value={formInput.sleepReview} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="SLEEPREVIEW" name="sleepReview" value={formInput.sleepReview} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="dream journal" className="mb-3">
-        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dreamJournal" value={formInput.dreamJournal} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dreamJournal" value={formInput.dreamJournal} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
+      <Form.Check
+        className="text-black mb-3"
+        type="switch"
+        id="favorite"
+        name="favorite"
+        label="Favorite?"
+        checked={formInput.favorite}
+        onChange={(e) => setFormInput((prevState) => ({
+          ...prevState,
+          favorite: e.target.checked,
+        }))}
+      />
       <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} dream journal</Button>
     </Form>
   );

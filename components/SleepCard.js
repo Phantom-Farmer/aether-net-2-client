@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
-import { deleteSingleSleepCard } from '../api/sleepCardData';
+import { deleteScDreamCards } from '../api/mergeData';
 
 export default function SleepCard({ scObj, onUpdate }) {
   const deleteThisSleepCard = () => {
-    if (window.confirm('Are you sure?')) {
-      deleteSingleSleepCard(scObj.firebaseKey).then(onUpdate);
+    if (window.confirm('Are you sure you want to delete this sleep card and all corresponding dream journals?')) {
+      deleteScDreamCards(scObj.firebaseKey).then(onUpdate);
     }
   };
   return (
@@ -20,15 +20,15 @@ export default function SleepCard({ scObj, onUpdate }) {
             sleep card for: {scObj.timeStamp}
           </Card.Text>
           <div>
-            <h4>mind:</h4>
+            <h4>- mind:</h4>
             <h3>{scObj.mind}</h3>
           </div>
           <div>
-            <h4>body:</h4>
+            <h4>- body:</h4>
             <h3>{scObj.body}</h3>
           </div>
           <div>
-            <h4>meditation:</h4>
+            <h4>- meditation:</h4>
             <h3>{scObj.meditation}</h3>
           </div>
           <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
