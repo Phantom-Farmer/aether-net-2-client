@@ -18,14 +18,15 @@ export default function DreamCard({ dcObj, onUpdate }) {
           <Card.Text>
             wake up: {dcObj.timeStamp}
           </Card.Text>
-          <div>
-            <h4>sleep review:</h4>
+          <div className="dcText">
+            <h4>- sleep review:</h4>
             <h3>{dcObj.sleepReview}</h3>
           </div>
           <div>
-            <h4>dream journal:</h4>
+            <h4>- dream journal:</h4>
             <h3>{dcObj.dreamJournal}</h3>
           </div>
+          <p className="card-text bold">{dcObj.favorite ? 'Favorite!' : '' }</p>
           <Link href="/dreamcard/dream-journal" passHref>
             <Button onClick={deleteThisDreamCard} className="m-2">
               delete
@@ -33,7 +34,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
           </Link>
           <Link href={`/dreamcard/edit/${dcObj.firebaseKey}`} passHref>
             <Button className="m-2">
-              update
+              edit
             </Button>
           </Link>
         </Card.Body>
@@ -48,6 +49,7 @@ DreamCard.propTypes = {
     sleepReview: PropTypes.string,
     dreamJournal: PropTypes.string,
     sleepCardId: PropTypes.string,
+    favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }),
@@ -60,6 +62,7 @@ DreamCard.defaultProps = {
     sleepReview: '',
     dreamJournal: '',
     sleepCardId: '',
+    favorite: false,
     firebaseKey: '',
     uid: '',
   }),

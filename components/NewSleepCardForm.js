@@ -51,10 +51,10 @@ export default function NewSleepCardForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'update' : 'create'} sleepcard</h2>
       <FloatingLabel controlId="floatingInput2" label="mind" className="mb-3">
-        <Form.Control type="text" placeholder="how does your mind feel?" name="mind" value={formInput.mind} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="how does your mind feel?" name="mind" value={formInput.mind} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="body" className="mb-3">
-        <Form.Control type="text" placeholder="how does your body feel?" name="body" value={formInput.body} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="how does your body feel?" name="body" value={formInput.body} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingSelect" label="meditation">
         <Form.Select name="meditation" value={formInput.meditation} onChange={handleChange} className="mb-3" required>
@@ -68,7 +68,7 @@ export default function NewSleepCardForm({ obj }) {
         </Form.Select>
       </FloatingLabel>
       <Form.Check
-        className="text-white mb-3"
+        className="text-black mb-3"
         type="switch"
         id="favorite"
         name="favorite"
