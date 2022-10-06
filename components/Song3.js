@@ -29,7 +29,7 @@ function Song3() {
   };
   return (
     <Card className="mc" style={{ width: '40rem' }}>
-      <img variant="top" alt="sleep-pic" src="/images/earth.jpg" />
+      <img alt="sleep-pic" src="/images/earth.jpg" />
       <Card.Body>
         <Card.Text>
           play earth song for a grounding experience putting you in touch with the divine mother

@@ -29,7 +29,7 @@ function Song4() {
   };
   return (
     <Card className="mc" style={{ width: '40rem' }}>
-      <img variant="top" alt="sleep-pic" src="/images/water.jpg" />
+      <img alt="sleep-pic" src="/images/water.jpg" />
       <Card.Body>
         <Card.Text>
           play water song for the light drizzle of soft rain or gentle flow of the ocean tide meeting the shoreline

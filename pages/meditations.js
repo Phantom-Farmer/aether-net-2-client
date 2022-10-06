@@ -8,7 +8,7 @@ export default function MeditationPage() {
   return (
     <>
       <Card className="med">
-        <img variant="top" alt="med-pic" src="/images/meditations.jpg" />
+        <img alt="med-pic" src="/images/meditations.jpg" />
         <Card.Body className="medBox">
           <Card.Text>
             These are descriptions for the meditation options you will have when creating a new sleep card.

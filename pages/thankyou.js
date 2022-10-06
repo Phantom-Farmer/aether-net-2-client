@@ -6,7 +6,7 @@ export default function thankyouPage() {
   return (
     <>
       <Card className="thanks">
-        <img variant="top" alt="thank-pic" src="/images/thankyou.jpg" />
+        <img alt="thank-pic" src="/images/thankyou.jpg" />
         <Card.Body className="thankBox">
           <div>
             <h1>I want to sincerely thank all of you for being such wonderful people!</h1>

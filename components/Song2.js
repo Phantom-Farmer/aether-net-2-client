@@ -29,7 +29,7 @@ function Song2() {
   };
   return (
     <Card className="mc" style={{ width: '40rem' }}>
-      <img variant="top" alt="sleep-pic" src="/images/fire.jpg" />
+      <img alt="sleep-pic" src="/images/fire.jpg" />
       <Card.Body>
         <Card.Text>
           play fire song to bring warmth and rejuvenation to your journey into sleep

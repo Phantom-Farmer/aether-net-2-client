@@ -14,7 +14,7 @@ export default function SleepCard({ scObj, onUpdate }) {
   return (
     <>
       <Card className="sc" style={{ width: '75rem' }}>
-        <img variant="top" alt="sleep-pic" src="/images/sleepcard.jpg" />
+        <img alt="sleep-pic" src="/images/sleepcard.jpg" />
         <Card.Body style={{ backgroundColor: 'lightblue' }}>
           <Card.Text>
             sleep card for: {scObj.timeStamp}

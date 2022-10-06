@@ -13,7 +13,7 @@ export default function DreamCard({ dcObj, onUpdate }) {
   return (
     <>
       <Card className="dc" style={{ width: '75rem' }}>
-        <img variant="top" alt="dream-pic" src="/images/dreamjournal.jpg" />
+        <img alt="dream-pic" src="/images/dreamjournal.jpg" />
         <Card.Body style={{ backgroundColor: 'peachpuff' }}>
           <Card.Text>
             wake up: {dcObj.timeStamp}

@@ -29,7 +29,7 @@ function Song1() {
   };
   return (
     <Card className="mc" style={{ width: '40rem' }}>
-      <img variant="top" alt="sleep-pic" src="/images/wind.jpg" />
+      <img alt="sleep-pic" src="/images/wind.jpg" />
       <Card.Body>
         <Card.Text>
           play wind song for a meditative gentle breeze helping you drift into restfulness
