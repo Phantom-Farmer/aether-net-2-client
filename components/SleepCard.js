@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
-import { deleteScDreamCards } from '../api/mergeData';
+import { deleteSingleSleepCard } from '../api/sleepCardData';
 
 export default function SleepCard({ scObj, onUpdate }) {
   const deleteThisSleepCard = () => {
     if (window.confirm('Are you sure you want to delete this sleep card and all corresponding dream journals?')) {
-      deleteScDreamCards(scObj.firebaseKey).then(onUpdate);
+      deleteSingleSleepCard(scObj.firebaseKey).then(onUpdate);
     }
   };
   return (
