@@ -1,17 +1,18 @@
 # aether-net
 
-!(title.jpg)
+![](public/images/title.jpg)
 
 Sleep well, dream big! This app, specifically styled for kids, is designed to help instill good sleep habits and restfulness for people who are challenged by insomnia and anxiety.
 
 The user can create a Sleep Card each night before bed that documents how they are feeling mentally and physically as well as choose a meditation/relaxation process to be used once in bed. Then the user can add an associated Dream Journal the next morning when the wake up in order to document how they slept and journal about their dreams. There are three preloaded meditation options or "custom" can be chosen as a fourth option if someone wants to use their own method or a different method than what has been provided in the app.
 
-!(sleepcard.jpg)
-!(dreamjournal.jpg)
+![](public/images/sleepcard.jpg)
+![](public/images/dreamjournal.jpg)
+
 
 There is a page that describes the three preloaded meditation options, as well as a page that offers four themed meditation audio tracks containing ambient music for those who find meditation music helpful for falling asleep.
 
-!(meditations.jpg)
+![](public/images/meditations.jpg)
 
 I chose to use hand made art for my images in styling to combine the digital world with our analog life experience, as well as to make the app more inviting for children and teenagers.
 
@@ -26,6 +27,33 @@ I chose to use hand made art for my images in styling to combine the digital wor
 - multiple dream journals can be applied to a Sleep Card
 - A Sleep CArd and it's associated Dream Journals can be viewed together in Sleep Study mode
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Phantom-Farmer/Aether-net.git
+```
+
+Go to the project directory
+
+```bash
+  cd Aether-net
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
 ## Roadmap
 
 - Ability for user to upload their own music or guided meditation tracks
@@ -38,7 +66,7 @@ I chose to use hand made art for my images in styling to combine the digital wor
 
 ## Tech Stack
 
-**Client:** React, Next.js, JavaScript, CSS
+**Client:** React, Next.js, JavaScript, CSS, Bootstrap
 
 **Server:** Firebase, Postman
 
@@ -48,4 +76,4 @@ I chose to use hand made art for my images in styling to combine the digital wor
 
 - Instructors: Dr Teresa Vasquez, Trinity Christiana, Aja Washington
 
-!(metatrons.jpg)
+![](public/images/metatrons.jpg)
