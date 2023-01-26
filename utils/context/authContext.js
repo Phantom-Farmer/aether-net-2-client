@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { checkUser, createUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -24,7 +25,27 @@ const AuthProvider = (props) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
-        setUser(fbUser);
+        checkUser(fbUser.uid).then((response) => {
+          if (!response.id) {
+            const userObj = {
+              uid: fbUser.uid,
+              image_url: fbUser.photoURL,
+              email: fbUser.email,
+              last_login: new Date().toISOString().slice(0, 10),
+            };
+            createUser(userObj).then((dbUser) => {
+              setUser({
+                ...dbUser,
+                fbUser,
+              });
+            });
+          } else {
+            setUser({
+              ...response,
+              fbUser,
+            });
+          }
+        });
       } else {
         setUser(false);
       }

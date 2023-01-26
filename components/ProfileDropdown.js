@@ -6,10 +6,10 @@ export default function ProfileDropdown() {
   const { user } = useAuth();
   return (
     <div className="profileDropdown">
-      <img src={user.photoURL} alt={user.displayName} />
+      <img src={user.image_url} alt={user.fbUser.displayName} />
       <h5>{user.displayName}</h5>
       <h6>{user.email}</h6>
-      <h6>{user.metadata.lastSignInTime}</h6>
+      <h6>{user.last_login}</h6>
     </div>
   );
 }

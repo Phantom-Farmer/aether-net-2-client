@@ -43,7 +43,7 @@ export default function NavBar() {
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    <img src={user?.photoURL} width="50px" height="50px" alt="user" className="user-icon" />
+                    <img src={user?.image_url} width="50px" height="50px" alt="user" className="user-icon" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
                     <div className="profileDropdownBottomDiv" style={{ paddingLeft: 50, paddingRight: 30 }}>
