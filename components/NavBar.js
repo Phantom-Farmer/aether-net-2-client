@@ -27,7 +27,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link style={{ paddingLeft: 70, paddingRight: 50 }}>sleep cards</Nav.Link>
             </Link>
-            <Link passHref href="/dreamcard/dream-journal">
+            <Link passHref href="/dreamcard/dream_journal">
               <Nav.Link style={{ paddingLeft: 40, paddingRight: 50 }}>dream journals</Nav.Link>
             </Link>
             <Link passHref href="/sleepcard/new">

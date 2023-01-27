@@ -6,15 +6,15 @@ import SleepCard from '../../components/SleepCard';
 export default function ViewSleepCard() {
   const [viewSleepCard, setViewSleepCard] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleSleepCard(firebaseKey).then(setViewSleepCard);
-  }, [firebaseKey]);
+    getSingleSleepCard(id).then(setViewSleepCard);
+  }, [id]);
 
   return (
     <div className="d-flex flex-wrap">
-      <SleepCard key={firebaseKey} scObj={viewSleepCard} />
+      <SleepCard key={id} scObj={viewSleepCard} />
     </div>
   );
 }

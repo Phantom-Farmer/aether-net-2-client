@@ -7,7 +7,7 @@ import { deleteSingleDreamCard } from '../api/dreamCardData';
 export default function DreamCard({ dcObj, onUpdate }) {
   const deleteThisDreamCard = () => {
     if (window.confirm('Are you sure?')) {
-      deleteSingleDreamCard(dcObj.firebaseKey).then(onUpdate);
+      deleteSingleDreamCard(dcObj.id).then(onUpdate);
     }
   };
   return (
@@ -20,19 +20,18 @@ export default function DreamCard({ dcObj, onUpdate }) {
           </Card.Text>
           <div className="dcText">
             <h4>- sleep review:</h4>
-            <h3>{dcObj.sleepReview}</h3>
+            <h3>{dcObj.sleep_review}</h3>
           </div>
           <div>
             <h4>- dream journal:</h4>
-            <h3>{dcObj.dreamJournal}</h3>
+            <h3>{dcObj.dream}</h3>
           </div>
-          <p className="card-text bold">{dcObj.favorite ? 'Favorite!' : '' }</p>
-          <Link href="/dreamcard/dream-journal" passHref>
+          <Link href="/dreamcard/dream_journal" passHref>
             <Button onClick={deleteThisDreamCard} className="m-2">
               delete
             </Button>
           </Link>
-          <Link href={`/dreamcard/edit/${dcObj.firebaseKey}`} passHref>
+          <Link href={`/dreamcard/edit/${dcObj.id}`} passHref>
             <Button className="m-2">
               edit
             </Button>
@@ -45,12 +44,12 @@ export default function DreamCard({ dcObj, onUpdate }) {
 
 DreamCard.propTypes = {
   dcObj: PropTypes.shape({
+    id: PropTypes.number,
     timeStamp: PropTypes.string,
-    sleepReview: PropTypes.string,
-    dreamJournal: PropTypes.string,
-    sleepCardId: PropTypes.string,
-    favorite: PropTypes.bool,
-    firebaseKey: PropTypes.string,
+    sleep_review: PropTypes.string,
+    dream: PropTypes.string,
+    sleep_number_id: PropTypes.string,
+    author_id: PropTypes.number,
     uid: PropTypes.string,
   }),
   onUpdate: PropTypes.func.isRequired,
@@ -58,12 +57,12 @@ DreamCard.propTypes = {
 
 DreamCard.defaultProps = {
   dcObj: PropTypes.shape({
+    id: '',
     timeStamp: '',
-    sleepReview: '',
-    dreamJournal: '',
-    sleepCardId: '',
-    favorite: false,
-    firebaseKey: '',
+    sleep_review: '',
+    dream: '',
+    sleep_number_id: '',
+    author_id: '',
     uid: '',
   }),
 

@@ -9,11 +9,11 @@ import DreamCard from '../../../components/DreamCard';
 export default function ViewSleepStudy() {
   const [sleepStudy, setSleepStudy] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    viewThisSleepStudy(firebaseKey).then(setSleepStudy);
-  }, [firebaseKey]);
+    viewThisSleepStudy(id).then(setSleepStudy);
+  }, [id]);
   console.warn(sleepStudy);
   return (
     <>
@@ -27,10 +27,10 @@ export default function ViewSleepStudy() {
         <div className="sleepStudyDreamBox">
           {sleepStudy.dreamCards?.map((dreamCard) => (
             <DreamCard
-              key={dreamCard.firebaseKey}
+              key={dreamCard.id}
               dcObj={dreamCard}
               onUpdate={() => {
-                viewThisSleepStudy(firebaseKey).then(setSleepStudy);
+                viewThisSleepStudy(id).then(setSleepStudy);
               }}
             />
           ))}

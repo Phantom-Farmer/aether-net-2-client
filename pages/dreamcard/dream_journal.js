@@ -36,7 +36,7 @@ export default function DisplayDc() {
       </h2>
       <div className="d-flex flex-wrap">
         {sortedDC(dreamCards).map((dcObj) => (
-          <DreamCard key={dcObj.firebaseKey} dcObj={dcObj} onUpdate={getAllDreamCards} />
+          <DreamCard key={dcObj.id} dcObj={dcObj} onUpdate={getAllDreamCards} />
         ))}
       </div>
     </>

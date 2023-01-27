@@ -26,10 +26,12 @@ const getSingleSleepCard = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteSingleSleepCard = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/sleepCards/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
+const deleteSingleSleepCard = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/sleep_card/${id}`, {
+    method: 'DELETE',
+  })
+    .then(resolve)
+    .catch(reject);
 });
 
 const updateSleepCard = (scObj) => new Promise((resolve, reject) => {

@@ -3,8 +3,9 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getDreamCardsByUid = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/dream_journal`)
+const getDreamCardsByUid = (id) => new Promise((resolve, reject) => {
+  console.warn(id);
+  fetch(`${dbUrl}/dream_journal?author=${id}`)
     .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
@@ -25,10 +26,12 @@ const getSingleDreamCard = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteSingleDreamCard = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/dreamCards/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
+const deleteSingleDreamCard = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/dream_journal/${id}`, {
+    method: 'DELETE',
+  })
+    .then(resolve)
+    .catch(reject);
 });
 
 const updateDreamCard = (dcObj) => new Promise((resolve, reject) => {
