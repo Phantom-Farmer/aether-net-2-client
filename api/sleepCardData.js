@@ -3,15 +3,9 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getSleepCardsByUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/sleepCards.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
+const getSleepCardsByUid = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/sleep_card`)
+    .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
 
@@ -25,9 +19,9 @@ const createSleepCard = (scObj) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const getSingleSleepCard = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/sleepCards/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+const getSingleSleepCard = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/sleep_card/${id}`)
+    .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
 
