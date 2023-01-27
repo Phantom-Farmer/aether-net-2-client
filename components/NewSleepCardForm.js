@@ -4,26 +4,26 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../utils/context/authContext';
+// import { useAuth } from '../utils/context/authContext';
 import { createSleepCard, updateSleepCard } from '../api/sleepCardData';
 
 const initialState = {
+  id: '',
   timeStamp: '',
   mind: '',
   body: '',
   meditation: '',
   favorite: false,
-  firebaseKey: '',
 };
 
 export default function NewSleepCardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey)setFormInput(obj);
+    if (obj.id)setFormInput(obj);
   }, [obj]);
 
   const handleChange = (e) => {
@@ -36,20 +36,27 @@ export default function NewSleepCardForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+
+    const sleepObj = {
+      id: formInput.id,
+      timeStamp: formInput.timeStamp,
+      mind: formInput.mind,
+      body: formInput.body,
+      meditation: formInput.meditation,
+      favorite: formInput.favorite,
+    };
+
+    if (obj.id) {
       updateSleepCard(formInput)
         .then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid };
-      createSleepCard(payload).then(() => {
-        router.push('/');
-      });
+      createSleepCard(sleepObj).then(() => router.push('/events'));
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{obj.firebaseKey ? 'update' : 'create'} sleepcard</h2>
+      <h2 className="text-black mt-5">{obj.id ? 'update' : 'create'} sleepcard</h2>
       <FloatingLabel controlId="floatingInput2" label="mind" className="mb-3">
         <Form.Control type="text" placeholder="how does your mind feel?" name="mind" value={formInput.mind} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
@@ -79,19 +86,19 @@ export default function NewSleepCardForm({ obj }) {
           favorite: e.target.checked,
         }))}
       />
-      <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} sleepcard</Button>
+      <Button type="submit">{obj.id ? 'update' : 'create'} sleepcard</Button>
     </Form>
   );
 }
 
 NewSleepCardForm.propTypes = {
   obj: PropTypes.shape({
+    id: PropTypes.number,
     timeStamp: PropTypes.string,
     mind: PropTypes.string,
     body: PropTypes.string,
     meditation: PropTypes.string,
     favorite: PropTypes.bool,
-    firebaseKey: PropTypes.string,
   }),
 };
 

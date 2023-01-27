@@ -5,49 +5,58 @@ import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
 import { deleteSingleSleepCard } from '../api/sleepCardData';
 
-export default function SleepCard({ scObj, onUpdate }) {
+export default function SleepCard({
+  id,
+  timeStamp,
+  mind,
+  body,
+  meditation,
+  favorite,
+  onUpdate,
+}) {
   const deleteThisSleepCard = () => {
     if (window.confirm('Are you sure you want to delete this sleep card and all corresponding dream journals?')) {
-      deleteSingleSleepCard(scObj.firebaseKey).then(onUpdate);
+      deleteSingleSleepCard(id).then(() => onUpdate());
     }
   };
+
   return (
     <>
       <Card className="sc" style={{ width: '75rem' }}>
         <img alt="sleep-pic" src="/images/sleepcard.jpg" />
         <Card.Body style={{ backgroundColor: 'lightblue' }}>
           <Card.Text>
-            sleep card for: {scObj.timeStamp}
+            sleep card for: {timeStamp}
           </Card.Text>
           <div>
             <h4>- mind:</h4>
-            <h3>{scObj.mind}</h3>
+            <h3>{mind}</h3>
           </div>
           <div>
             <h4>- body:</h4>
-            <h3>{scObj.body}</h3>
+            <h3>{body}</h3>
           </div>
           <div>
             <h4>- meditation:</h4>
-            <h3>{scObj.meditation}</h3>
+            <h3>{meditation}</h3>
           </div>
-          <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
+          <p className="card-text bold">{favorite ? 'Favorite!' : '' }</p>
           <Link href="/" passHref>
             <Button onClick={deleteThisSleepCard} className="m-3">
               delete
             </Button>
           </Link>
-          <Link href={`/sleepcard/edit/${scObj.firebaseKey}`} passHref>
+          <Link href={`/sleepcard/edit/${id}`} passHref>
             <Button className="m-3">
               edit
             </Button>
           </Link>
-          <Link href={`dreamcard/new/${scObj.firebaseKey}`} passHref>
+          <Link href={`dreamcard/new/${id}`} passHref>
             <Button className="m-3">
               add dream journal
             </Button>
           </Link>
-          <Link href={`sleepcard/sleepstudy/${scObj.firebaseKey}`} passHref>
+          <Link href={`sleepcard/sleepstudy/${id}`} passHref>
             <Button className="m-3">
               view this sleep study
             </Button>
@@ -59,13 +68,11 @@ export default function SleepCard({ scObj, onUpdate }) {
 }
 
 SleepCard.propTypes = {
-  scObj: PropTypes.shape({
-    timeStamp: PropTypes.string,
-    mind: PropTypes.string,
-    body: PropTypes.string,
-    meditation: PropTypes.string,
-    favorite: PropTypes.bool,
-    firebaseKey: PropTypes.string,
-  }).isRequired,
+  id: PropTypes.number.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  mind: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  meditation: PropTypes.string.isRequired,
+  favorite: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

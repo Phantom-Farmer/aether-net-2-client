@@ -3,15 +3,9 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getDreamCardsByUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/dreamCards.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
+const getDreamCardsByUid = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/dream_journal`)
+    .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
 

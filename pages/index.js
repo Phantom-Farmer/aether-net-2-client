@@ -3,7 +3,7 @@
 import { React, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Card } from 'react-bootstrap';
-import { getSleepCardsByUid } from '../api/sleepCardData';
+import { getSleepCardsByUserId } from '../api/sleepCardData';
 import SleepCard from '../components/SleepCard';
 import { useAuth } from '../utils/context/authContext';
 
@@ -19,7 +19,7 @@ export default function Home() {
   const [sleepCards, setSleepCards] = useState([]);
   const { user } = useAuth();
   const getAllSleepCards = () => {
-    getSleepCardsByUid(user.uid).then((scArray) => {
+    getSleepCardsByUserId(user.uid).then((scArray) => {
       setSleepCards(scArray);
     });
   };
