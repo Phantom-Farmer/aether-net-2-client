@@ -11,11 +11,11 @@ const getDreamCardsByUid = (id) => new Promise((resolve, reject) => {
 });
 
 const createDreamCard = (dcObj) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/dreamCards.json?`, dcObj)
+  fetch(`${dbUrl}/sleep_card`, dcObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/dreamCards/${response.data.name}.json`, payload).then(() => {
-        getDreamCardsByUid(dcObj.uid).then((dcArray) => resolve(dcArray));
+      const payload = { dcObj };
+      axios.patch(`${dbUrl}/dream_journal/${response.data.name}.json`, payload).then(() => {
+        getDreamCardsByUid(dcObj.id).then((dcArray) => resolve(dcArray));
       });
     }).catch((error) => reject(error));
 });

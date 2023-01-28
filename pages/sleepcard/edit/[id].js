@@ -6,11 +6,11 @@ import NewSleepCardForm from '../../../components/NewSleepCardForm';
 export default function UpdateSleepCard() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleSleepCard(firebaseKey).then(setEditItem);
-  }, [firebaseKey]);
+    getSingleSleepCard(id).then(setEditItem);
+  }, [id]);
 
   return (<NewSleepCardForm obj={editItem} />);
 }

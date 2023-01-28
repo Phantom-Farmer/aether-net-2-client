@@ -50,7 +50,7 @@ export default function NewSleepCardForm({ obj }) {
     };
 
     if (obj.id) {
-      updateSleepCard(formInput)
+      updateSleepCard(sleepObj, obj.id)
         .then(() => router.push('/'));
     } else {
       createSleepCard(sleepObj).then(() => router.push('/'));

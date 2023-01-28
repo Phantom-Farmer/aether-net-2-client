@@ -34,10 +34,14 @@ const deleteSingleSleepCard = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateSleepCard = (scObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/sleepCards/${scObj.firebaseKey}.json`, scObj)
-    .then(() => getSleepCardsByUserId(scObj.uid)).then(resolve)
-    .catch(reject);
+const updateSleepCard = (data, id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/sleep_card/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
 });
 
 const getSleepCardDreamJournals = (firebaseKey) => new Promise((resolve, reject) => {
