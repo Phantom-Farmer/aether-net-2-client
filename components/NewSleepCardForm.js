@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-// import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
 import { createSleepCard, updateSleepCard } from '../api/sleepCardData';
 
 const initialState = {
@@ -14,13 +14,15 @@ const initialState = {
   body: '',
   meditation: '',
   favorite: false,
+  author: '',
 };
 
 export default function NewSleepCardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
 
-  // const { user } = useAuth();
+  const { user } = useAuth();
+  console.warn(user);
 
   useEffect(() => {
     if (obj.id)setFormInput(obj);
@@ -44,13 +46,14 @@ export default function NewSleepCardForm({ obj }) {
       body: formInput.body,
       meditation: formInput.meditation,
       favorite: formInput.favorite,
+      author: user.id,
     };
 
     if (obj.id) {
       updateSleepCard(formInput)
         .then(() => router.push('/'));
     } else {
-      createSleepCard(sleepObj).then(() => router.push('/events'));
+      createSleepCard(sleepObj).then(() => router.push('/'));
     }
   };
 
@@ -99,6 +102,7 @@ NewSleepCardForm.propTypes = {
     body: PropTypes.string,
     meditation: PropTypes.string,
     favorite: PropTypes.bool,
+    author: PropTypes.number,
   }),
 };
 

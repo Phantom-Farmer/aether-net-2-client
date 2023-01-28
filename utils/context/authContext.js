@@ -49,6 +49,7 @@ const AuthProvider = (props) => {
       } else {
         setUser(false);
       }
+      console.warn(user);
     }); // creates a single global listener for auth state changed
   }, []);
 

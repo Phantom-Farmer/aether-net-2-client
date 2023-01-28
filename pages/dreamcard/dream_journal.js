@@ -10,7 +10,7 @@ export default function DisplayDc() {
   const [dreamCards, setDreamCards] = useState([]);
   const { user } = useAuth();
   const getAllDreamCards = () => {
-    getDreamCardsByUid(user.uid).then((scArray) => {
+    getDreamCardsByUid(user.id).then((scArray) => {
       setDreamCards(scArray);
     });
   };
