@@ -6,23 +6,27 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { createDreamCard, updateDreamCard } from '../api/dreamCardData';
+import { getSingleSleepCard } from '../api/sleepCardData';
 
 const initialState = {
   timeStamp: '',
   sleepReview: '',
-  dreamJournal: '',
-  favorite: false,
-  firebaseKey: '',
+  dream: '',
 };
 
-export default function NewDreamCardForm({ obj, scFirebaseKey }) {
+export default function NewDreamCardForm({ obj, scId }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [sleepCard, setSleepCard] = useState({});
   const router = useRouter();
 
   const { user } = useAuth();
 
   useEffect(() => {
     if (obj.firebaseKey)setFormInput(obj);
+    getSingleSleepCard(scId).then((sc) => {
+      setSleepCard(sc);
+    });
+    console.warn(sleepCard);
   }, [obj]);
 
   const handleChange = (e) => {
@@ -40,7 +44,7 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
         .then(() => router.push('/dreamcard/dream-journal'));
     } else {
       const payload = {
-        ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,
+        ...formInput, timeStamp: new Date().toLocaleString(), author: sleepCard.author.id, sleepNumber: scId,
       };
       createDreamCard(payload).then(() => {
         router.push('/dreamcard/dream-journal');
@@ -55,20 +59,8 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
         <Form.Control type="text" placeholder="SLEEPREVIEW" name="sleepReview" value={formInput.sleepReview} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="dream journal" className="mb-3">
-        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dreamJournal" value={formInput.dreamJournal} onChange={handleChange} as="textarea" aria-label="With textarea" required />
+        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dream" value={formInput.dream} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
-      <Form.Check
-        className="text-black mb-3"
-        type="switch"
-        id="favorite"
-        name="favorite"
-        label="Favorite?"
-        checked={formInput.favorite}
-        onChange={(e) => setFormInput((prevState) => ({
-          ...prevState,
-          favorite: e.target.checked,
-        }))}
-      />
       <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} dream journal</Button>
     </Form>
   );
@@ -78,15 +70,14 @@ NewDreamCardForm.propTypes = {
   obj: PropTypes.shape({
     timeStamp: PropTypes.string,
     sleepReview: PropTypes.string,
-    dreamJournal: PropTypes.string,
-    favorite: PropTypes.bool,
-    sleepCardId: PropTypes.string,
+    dream: PropTypes.string,
+    author: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
-  scFirebaseKey: PropTypes.string,
+  scId: PropTypes.number,
 };
 
 NewDreamCardForm.defaultProps = {
   obj: initialState,
-  scFirebaseKey: '',
+  scId: undefined,
 };

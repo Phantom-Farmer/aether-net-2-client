@@ -11,18 +11,19 @@ const getDreamCardsByUid = (id) => new Promise((resolve, reject) => {
 });
 
 const createDreamCard = (dcObj) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/sleep_card`, dcObj)
-    .then((response) => {
-      const payload = { dcObj };
-      axios.patch(`${dbUrl}/dream_journal/${response.data.name}.json`, payload).then(() => {
-        getDreamCardsByUid(dcObj.id).then((dcArray) => resolve(dcArray));
-      });
-    }).catch((error) => reject(error));
+  data = ({})
+  fetch(`${dbUrl}/dream_journal`, {
+    method: 'POST',
+    body: JSON.stringify(dcObj),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((response) => resolve(response.json()))
+    .catch((error) => reject(error));
 });
 
-const getSingleDreamCard = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/dreamCards/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+const getSingleDreamCard = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/dream_journal/${id}`)
+    .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
 

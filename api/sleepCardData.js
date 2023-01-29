@@ -21,7 +21,7 @@ const createSleepCard = (scObj) => new Promise((resolve, reject) => {
 });
 
 const getSingleSleepCard = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/sleep_card/${id}`)
+  fetch(`${dbUrl}/sleep_card/${id}`)
     .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
@@ -44,9 +44,9 @@ const updateSleepCard = (data, id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSleepCardDreamJournals = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/dreamCards.json?orderBy="sleepCardId"&equalTo="${firebaseKey}"`)
-    .then((response) => resolve(Object.values(response.data)))
+const getSleepCardDreamJournals = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/dream_journal?sleep_number=${id}`)
+    .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
 });
 

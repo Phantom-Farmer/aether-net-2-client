@@ -22,12 +22,12 @@ export default function ViewSleepStudy() {
           sleep study
         </h2>
         <div className="sleepStudyBox">
-          <SleepCard scObj={sleepStudy} />
+          <SleepCard scObj={sleepStudy} onUpdate={() => {}} />
         </div>
         <div className="sleepStudyDreamBox">
           {sleepStudy.dreamCards?.map((dreamCard) => (
             <DreamCard
-              key={dreamCard.id}
+              key={dreamCard.sleep_number}
               dcObj={dreamCard}
               onUpdate={() => {
                 viewThisSleepStudy(id).then(setSleepStudy);
