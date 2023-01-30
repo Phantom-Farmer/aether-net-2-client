@@ -59,7 +59,7 @@ const updateDreamCard = (dcObj, id) => new Promise((resolve, reject) => {
     sleep_number: Number(dcObj.sleepNumberId),
     author: Number(dcObj.author),
   };
-  fetch(`${dbUrl}/dreamCards/${id}`, {
+  fetch(`${dbUrl}/dream_journal/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(dreamObj),
@@ -69,7 +69,7 @@ const updateDreamCard = (dcObj, id) => new Promise((resolve, reject) => {
 });
 
 const getDreamCardBySleepNumberId = (sleepNumberId) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/dream_card?sleep_card${sleepNumberId}"`)
+  axios.get(`${dbUrl}/dream_journal?sleep_card${sleepNumberId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });

@@ -17,17 +17,25 @@ const initialState = {
 export default function NewDreamCardForm({ obj, scId }) {
   const [formInput, setFormInput] = useState(initialState);
   const [sleepCard, setSleepCard] = useState({});
+  const [sleepCardNumber, setSleepCardNumber] = useState(null);
   const router = useRouter();
 
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.id)setFormInput(obj);
-    getSingleSleepCard(scId).then((sc) => {
-      setSleepCard(sc);
-    });
-    console.warn(sleepCard);
+    if (obj.id) {
+      setFormInput(obj);
+      setSleepCardNumber(obj.sleepNumberId.id);
+    } else {
+      getSingleSleepCard(scId).then((sc) => {
+        setSleepCard(sc);
+      });
+    }
   }, [obj]);
+
+  useEffect(() => {
+    console.warn(sleepCardNumber);
+  }, [sleepCardNumber]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +54,7 @@ export default function NewDreamCardForm({ obj, scId }) {
       sleepReview: formInput.sleepReview,
       dream: formInput.dream,
       author: user.id,
-      sleepNumberId: sleepCard.id,
+      sleepNumberId: sleepCardNumber,
     };
     if (obj.id) {
       updateDreamCard(dreamObj, obj.id)
