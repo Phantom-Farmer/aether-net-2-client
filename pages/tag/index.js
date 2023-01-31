@@ -21,7 +21,7 @@ function TagsPage() {
   return (
     <>
       <TagForm refresh={refresh} />
-      <h2>Tags</h2>
+      <h2>tags</h2>
       <Table striped bordered hover>
         <tbody>
           {
@@ -29,11 +29,11 @@ function TagsPage() {
               <tr key={tag.id}>
                 <td>
                   <Link href={`/tag/edit/${tag.id}`} passhref="true">
-                    <Button size="sm" variant="dark">
-                      EDIT
+                    <Button size="sm" className="m-3">
+                      edit
                     </Button>
                   </Link>
-                  <Button variant="danger" onClick={() => deleteTag(tag.id).then(() => getAllTags())}>Delete</Button>
+                  <Button onClick={() => deleteTag(tag.id).then(() => getAllTags())} size="sm" className="m-3">delete</Button>
                 </td>
                 <td>{tag.label}</td>
               </tr>

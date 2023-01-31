@@ -19,7 +19,7 @@ const deleteSCTag = (id) => new Promise((resolve, reject) => {
 
 const createSCTag = (scTag) => new Promise((resolve, reject) => {
   const scTagObj = {
-    sleep_number_id: Number(scTag.postId),
+    sleep_number_id: Number(scTag.scId),
     tag_id: Number(scTag.tagId),
   };
   fetch(`${dbUrl}/sc_tag`, {

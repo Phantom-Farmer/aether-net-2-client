@@ -25,7 +25,7 @@ export default function NavBar() {
           <Nav className="me-auto" style={{ paddingTop: 30, paddingLeft: 50, paddingRight: 50 }}>
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link style={{ paddingLeft: 70, paddingRight: 50 }}>sleep cards</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 20, paddingRight: 50 }}>sleep cards</Nav.Link>
             </Link>
             <Link passHref href="/dreamcard/dream_journal">
               <Nav.Link style={{ paddingLeft: 40, paddingRight: 50 }}>dream journals</Nav.Link>
@@ -37,7 +37,10 @@ export default function NavBar() {
               <Nav.Link style={{ paddingLeft: 40, paddingRight: 50 }}>meditations</Nav.Link>
             </Link>
             <Link passHref href="/music">
-              <Nav.Link style={{ paddingLeft: 40, paddingRight: 150 }}>music</Nav.Link>
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 50 }}>music</Nav.Link>
+            </Link>
+            <Link passHref href="/tag">
+              <Nav.Link style={{ paddingLeft: 40, paddingRight: 70 }}>tags</Nav.Link>
             </Link>
             <div className="navbarProfile" id="navbarTogglerDemo01">
               <ul className="navbar-nav">
