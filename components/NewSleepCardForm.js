@@ -5,7 +5,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import { createSleepCard, updateSleepCard } from '../api/sleepCardData';
+import { createSleepCard, getSingleSleepCard, updateSleepCard } from '../api/sleepCardData';
+import { getTags } from '../api/tagData';
+import { createSCTag, deleteSCTag, getTagsBySC } from '../api/scTagData';
 
 const initialState = {
   id: '',
@@ -19,13 +21,21 @@ const initialState = {
 
 export default function NewSleepCardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
   const router = useRouter();
 
   const { user } = useAuth();
   console.warn(user);
 
   useEffect(() => {
-    if (obj.id)setFormInput(obj);
+    getTags().then(setTags);
+    if (obj.id) {
+      getSingleSleepCard(obj.id).then((response) => {
+        getTagsBySC(obj.id).then((tagArr) => setSelectedTags(tagArr.map((tag) => tag.id)));
+        setFormInput(response);
+      });
+    }
   }, [obj]);
 
   const handleChange = (e) => {
@@ -34,6 +44,14 @@ export default function NewSleepCardForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleTagChange = (tagId) => {
+    if (selectedTags.includes(tagId)) {
+      setSelectedTags(selectedTags.filter((tag) => tag !== tagId));
+    } else {
+      setSelectedTags([...selectedTags, tagId]);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -50,10 +68,36 @@ export default function NewSleepCardForm({ obj }) {
     };
 
     if (obj.id) {
+      getTagsBySC(obj.id).then((existingSCTags) => {
+        existingSCTags.forEach((existingSCTag) => {
+          if (!selectedTags.includes(existingSCTag.id)) {
+            deleteSCTag(existingSCTag.id);
+          }
+        });
+        selectedTags.forEach((tagId) => {
+          const existingSCTag = existingSCTags.find((scTag) => scTag.id === tagId);
+          if (!existingSCTag) {
+            const scTag = {
+              scId: obj.id,
+              tagId,
+            };
+            createSCTag(scTag);
+          }
+        });
+      });
       updateSleepCard(sleepObj, obj.id)
         .then(() => router.push('/'));
     } else {
-      createSleepCard(sleepObj).then(() => router.push('/'));
+      createSleepCard(sleepObj).then((response) => {
+        selectedTags.forEach((tagId) => {
+          const scTag = {
+            scId: response.id,
+            tagId,
+          };
+          createSCTag(scTag);
+        });
+        router.push('/');
+      });
     }
   };
 
@@ -89,6 +133,12 @@ export default function NewSleepCardForm({ obj }) {
           favorite: e.target.checked,
         }))}
       />
+      <Form.Group className="mb-3">
+        <Form.Label>tags</Form.Label>
+        {tags.map((tag) => (
+          <Form.Check type="checkbox" label={tag.label} value={tag.id} key={tag.id} checked={selectedTags.includes(tag.id)} onChange={() => handleTagChange(tag.id)} id={`checkbox-${tag.id}`} />
+        ))}
+      </Form.Group>
       <Button type="submit">{obj.id ? 'update' : 'create'} sleepcard</Button>
     </Form>
   );
@@ -104,8 +154,13 @@ NewSleepCardForm.propTypes = {
     favorite: PropTypes.bool,
     author: PropTypes.number,
   }),
+  tagId: PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+  }),
 };
 
 NewSleepCardForm.defaultProps = {
   obj: initialState,
+  tagId: '',
 };

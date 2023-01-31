@@ -1,16 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
 import { deleteSingleSleepCard } from '../api/sleepCardData';
+import { getTagsBySC } from '../api/scTagData';
 
 export default function SleepCard({ scObj, onUpdate }) {
+  const [scTagsArray, setScTagsArray] = useState([]);
   const deleteThisSleepCard = () => {
     if (window.confirm('Are you sure you want to delete this sleep card and all corresponding dream journals?')) {
       deleteSingleSleepCard(scObj.id).then(onUpdate);
     }
   };
+
+  useEffect(() => {
+    getTagsBySC(scObj.id).then(setScTagsArray);
+  }, [scObj.id]);
   return (
     <>
       <Card className="sc" style={{ width: '75rem' }}>
@@ -32,6 +38,15 @@ export default function SleepCard({ scObj, onUpdate }) {
             <h3>{scObj.meditation}</h3>
           </div>
           <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
+        </Card.Body>
+        <Card.Footer className="cardFooter">
+          {scTagsArray.length > 0
+            ? scTagsArray.map((scTag) => (
+              <span key={scTag.id} className="badge text-bg-dark">
+                {scTag.tag_label}
+              </span>
+            ))
+            : ''}
           <Link href="/" passHref>
             <Button onClick={deleteThisSleepCard} className="m-3">
               delete
@@ -52,7 +67,7 @@ export default function SleepCard({ scObj, onUpdate }) {
               view this sleep study
             </Button>
           </Link>
-        </Card.Body>
+        </Card.Footer>
       </Card>
     </>
   );

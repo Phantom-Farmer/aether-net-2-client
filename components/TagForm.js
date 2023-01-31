@@ -42,11 +42,11 @@ function TagForm({ object }) {
   };
   return (
     <Form className="form-floating" onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{object.id ? 'Update' : 'Create'} a Tag</h2>
-      <FloatingLabel controlId="floatingInput1" label="Tag" className="mb-3">
+      <h2 className="text-black mt-5">{object.id ? 'update' : 'create'} a tag</h2>
+      <FloatingLabel controlId="floatingInput1" label="tag" className="m-3">
         <Form.Control type="text" placeholder="Label" name="label" value={formInput.label} onChange={handleChange} required />
       </FloatingLabel>
-      <Button type="submit">{object.id ? 'Update' : 'Create'} Tag</Button>
+      <Button type="submit" className="m-3">{object.id ? 'Update' : 'create'} tag</Button>
     </Form>
   );
 }
