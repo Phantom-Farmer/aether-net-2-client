@@ -6,11 +6,11 @@ import NewDreamCardForm from '../../../components/NewDreamCardForm';
 export default function UpdateDreamCard() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleDreamCard(firebaseKey).then(setEditItem);
-  }, [firebaseKey]);
+    getSingleDreamCard(id).then(setEditItem);
+  }, [id]);
 
   return (<NewDreamCardForm obj={editItem} />);
 }

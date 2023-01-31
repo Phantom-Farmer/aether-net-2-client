@@ -14,7 +14,7 @@ export default function ViewSleepCard() {
 
   return (
     <div className="d-flex flex-wrap">
-      <SleepCard key={id} scObj={viewSleepCard} />
+      <SleepCard key={id} scObj={viewSleepCard} onUpdate={() => {}} />
     </div>
   );
 }

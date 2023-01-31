@@ -6,24 +6,36 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { createDreamCard, updateDreamCard } from '../api/dreamCardData';
+import { getSingleSleepCard } from '../api/sleepCardData';
 
 const initialState = {
   timeStamp: '',
   sleepReview: '',
-  dreamJournal: '',
-  favorite: false,
-  firebaseKey: '',
+  dream: '',
 };
 
-export default function NewDreamCardForm({ obj, scFirebaseKey }) {
+export default function NewDreamCardForm({ obj, scId }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [sleepCard, setSleepCard] = useState({});
+  const [sleepCardNumber, setSleepCardNumber] = useState(null);
   const router = useRouter();
 
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey)setFormInput(obj);
+    if (obj.id) {
+      setFormInput(obj);
+      setSleepCardNumber(obj.sleepNumberId.id);
+    } else {
+      getSingleSleepCard(scId).then((sc) => {
+        setSleepCard(sc);
+      });
+    }
   }, [obj]);
+
+  useEffect(() => {
+    console.warn(sleepCardNumber);
+  }, [sleepCardNumber]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,58 +47,55 @@ export default function NewDreamCardForm({ obj, scFirebaseKey }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
-      updateDreamCard(formInput)
-        .then(() => router.push('/dreamcard/dream-journal'));
+
+    const dreamObj = {
+      id: formInput.id,
+      timeStamp: formInput.timeStamp,
+      sleepReview: formInput.sleepReview,
+      dream: formInput.dream,
+      author: user.id,
+      sleepNumberId: sleepCardNumber,
+    };
+    if (obj.id) {
+      updateDreamCard(dreamObj, obj.id)
+        .then(() => router.push('/dreamcard/dream_journal'));
     } else {
       const payload = {
-        ...formInput, timeStamp: new Date().toLocaleString(), uid: user.uid, sleepCardId: scFirebaseKey,
+        ...formInput, timeStamp: new Date().toLocaleString(), author: sleepCard.author.id, sleepNumberId: sleepCard.id,
       };
       createDreamCard(payload).then(() => {
-        router.push('/dreamcard/dream-journal');
+        router.push('/dreamcard/dream_journal');
       });
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{obj.firebaseKey ? 'update' : 'create'} dream journal</h2>
+      <h2 className="text-black mt-5">{obj.id ? 'update' : 'create'} dream journal</h2>
       <FloatingLabel controlId="floatingInput2" label="sleep review" className="mb-3">
         <Form.Control type="text" placeholder="SLEEPREVIEW" name="sleepReview" value={formInput.sleepReview} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="dream journal" className="mb-3">
-        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dreamJournal" value={formInput.dreamJournal} onChange={handleChange} as="textarea" aria-label="With textarea" required />
+        <Form.Control type="text" placeholder="DREAMJOURNAL" name="dream" value={formInput.dream} onChange={handleChange} as="textarea" aria-label="With textarea" required />
       </FloatingLabel>
-      <Form.Check
-        className="text-black mb-3"
-        type="switch"
-        id="favorite"
-        name="favorite"
-        label="Favorite?"
-        checked={formInput.favorite}
-        onChange={(e) => setFormInput((prevState) => ({
-          ...prevState,
-          favorite: e.target.checked,
-        }))}
-      />
-      <Button type="submit">{obj.firebaseKey ? 'update' : 'create'} dream journal</Button>
+      <Button type="submit">{obj.id ? 'update' : 'create'} dream journal</Button>
     </Form>
   );
 }
 
 NewDreamCardForm.propTypes = {
   obj: PropTypes.shape({
+    id: PropTypes.number,
     timeStamp: PropTypes.string,
     sleepReview: PropTypes.string,
-    dreamJournal: PropTypes.string,
-    favorite: PropTypes.bool,
-    sleepCardId: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    dream: PropTypes.string,
+    author: PropTypes.number,
+    sleepNumberId: PropTypes.number,
   }),
-  scFirebaseKey: PropTypes.string,
+  scId: PropTypes.number,
 };
 
 NewDreamCardForm.defaultProps = {
   obj: initialState,
-  scFirebaseKey: '',
+  scId: '',
 };

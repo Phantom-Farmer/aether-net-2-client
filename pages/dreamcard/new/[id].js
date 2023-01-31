@@ -4,9 +4,9 @@ import NewDreamCardForm from '../../../components/NewDreamCardForm';
 
 export default function NewDream() {
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
   console.warn(router);
   return (
-    <NewDreamCardForm scFirebaseKey={firebaseKey} />
+    <NewDreamCardForm scId={id} />
   );
 }

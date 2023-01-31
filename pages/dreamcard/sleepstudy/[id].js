@@ -9,11 +9,11 @@ export default function ViewSleepStudy() {
   const [sleepStudy, setSleepStudy] = useState({});
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    viewThisSleepStudy(firebaseKey).then(setSleepStudy);
-  }, [firebaseKey]);
+    viewThisSleepStudy(id).then(setSleepStudy);
+  }, [id]);
 
   return (
     <div className="mt-5 d-flex flex-wrap">
