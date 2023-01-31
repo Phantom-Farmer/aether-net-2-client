@@ -40,13 +40,6 @@ export default function SleepCard({ scObj, onUpdate }) {
           <p className="card-text bold">{scObj.favorite ? 'Favorite!' : '' }</p>
         </Card.Body>
         <Card.Footer className="cardFooter">
-          {scTagsArray.length > 0
-            ? scTagsArray.map((scTag) => (
-              <span key={scTag.id} className="badge text-bg-dark">
-                {scTag.tag_label}
-              </span>
-            ))
-            : ''}
           <Link href="/" passHref>
             <Button onClick={deleteThisSleepCard} className="m-3">
               delete
@@ -67,6 +60,13 @@ export default function SleepCard({ scObj, onUpdate }) {
               view this sleep study
             </Button>
           </Link>
+          {scTagsArray.length > 0
+            ? scTagsArray.map((scTag) => (
+              <span key={scTag.id} className="badge text-bg-light">
+                {scTag.tag_label}
+              </span>
+            ))
+            : ''}
         </Card.Footer>
       </Card>
     </>

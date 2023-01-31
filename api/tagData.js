@@ -47,7 +47,7 @@ export const updateTag = (tag, id) => new Promise((resolve, reject) => {
 });
 
 export const deleteTag = (id) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/tags/${id}`, {
+  fetch(`${dbUrl}/tag/${id}`, {
     method: 'DELETE',
   })
     .then(resolve)

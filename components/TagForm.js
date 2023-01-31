@@ -34,7 +34,7 @@ function TagForm({ object }) {
     e.preventDefault();
     if (object.id) {
       updateTag(formInput, object.id)
-        .then(() => router.push('/tags'));
+        .then(() => router.push('/tag'));
     } else {
       const payload = { ...formInput };
       addTag(payload).then(setFormInput(initialState));
